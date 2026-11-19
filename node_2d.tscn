@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dsjhl4lw0ivqy"]
+
+[ext_resource type="Texture2D" uid="uid://caca0vg3hvo2q" path="res://img.png" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D" unique_id=1060441102]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=462501106]
+position = Vector2(164.4182, 172.23524)
+rotation = 5.628687
+scale = Vector2(0.24505174, 0.19864741)
+texture = ExtResource("1_wtcfe")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2138347037]
+position = Vector2(241, 74)
