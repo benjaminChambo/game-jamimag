@@ -1,16 +1,15 @@
 [gd_scene format=3 uid="uid://dsjhl4lw0ivqy"]
 
 [ext_resource type="Texture2D" uid="uid://caca0vg3hvo2q" path="res://img.png" id="1_wtcfe"]
-[ext_resource type="Script" uid="uid://bnkqrrp4qsvek" path="res://sprite_2d.gd" id="2_0e48y"]
+[ext_resource type="Script" uid="uid://d1i5qd47wlacb" path="res://sprite_3d.gd" id="2_0e48y"]
 
-[node name="Node2D" type="Node2D" unique_id=1060441102]
+[node name="Node2D" type="Node3D" unique_id=1825109809]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=462501106]
-position = Vector2(164.4182, 172.23524)
-rotation = 5.628687
-scale = Vector2(0.24505174, 0.19864741)
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1892305457]
+transform = Transform3D(0.9614495, -0.27498147, 0, 0.27498147, 0.9614495, 0, 0, 0, 1, -0.2758093, -0.9854603, -2.8743649)
+pixel_size = 0.002
 texture = ExtResource("1_wtcfe")
 script = ExtResource("2_0e48y")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2138347037]
-position = Vector2(241, 74)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1498436191]
+transform = Transform3D(0.8262008, 0, 0.56337583, 0, 1, 0, -0.56337583, 0, 0.8262008, 0.68605167, 0.07403824, 1.8527818)
