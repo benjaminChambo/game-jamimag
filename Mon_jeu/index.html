@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Page Turner - Platformer dans un livre</title>
+<style>
+  html, body { margin:0; padding:0; overflow:hidden; background:#0d0d0d; font-family:'Georgia',serif; }
+  #game { display:block; margin:0 auto; }
+  #ui { position:fixed; top:10px; left:10px; color:#eee; font-size:13px; pointer-events:none; text-shadow:0 1px 2px #000; z-index:5; }
+  #title { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#eee; text-align:center; pointer-events:none; z-index:10; background:radial-gradient(ellipse at center,#2a2a3a,#0d0d0d); }
+  #title h1 { font-size:64px; margin:0; letter-spacing:2px; }
+  #title p { font-size:18px; opacity:.85; margin:8px 0; }
+  #title .hint { font-size:14px; opacity:.6; margin-top:24px; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="ui"></div>
+<div id="title">
+  <h1>Page Turner</h1>
+  <p>Un platformer qui se déroule dans un livre.</p>
+  <p class="hint">Flèches / WASD : déplacer &nbsp;•&nbsp; Espace / ↑ : sauter &nbsp;•&nbsp; E / Shift : tourner la page &nbsp;•&nbsp; R : recommencer</p>
+  <p class="hint">Appuyez sur Espace pour commencer</p>
+</div>
+<script>
+// ===================== CONFIG =====================
+const W = 960, H = 640;
+const canvas = document.getElementById('game');
+canvas.width = W; canvas.height = H;
+const ctx = canvas.getContext('2d');
+
+const GRAVITY = 0.62;
+const MOVE_SPEED = 4.6;
+const JUMP_VEL = -12.2;
+const FRICTION = 0.8;
+const AIR_CONTROL = 0.55;
+
+const PLAYER_W = 16;
+const PLAYER_H = 32;
+
+// ===================== AUDIO =====================
+let audioCtx = null;
+function ensureAudio(){ if(!audioCtx){ try{ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
+function beep(freq, dur, type='sine', vol=0.08){
+  if(!audioCtx) return;
+  const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+  o.type=type; o.frequency.value=freq;
+  g.gain.value=vol;
+  o.connect(g); g.connect(audioCtx.destination);
+  o.start();
+  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime+dur);
+  o.stop(audioCtx.currentTime+dur);
+}
+function sfxJump(){ beep(520,0.12,'square',0.06); }
+function sfxFlip(){ beep(300,0.08,'triangle',0.07); setTimeout(()=>beep(420,0.1,'triangle',0.07),60); }
+function sfxWin(){ beep(523,0.12,'sine',0.08); setTimeout(()=>beep(659,0.12,'sine',0.08),120); setTimeout(()=>beep(784,0.18,'sine',0.08),240); }
+function sfxDie(){ beep(220,0.2,'sawtooth',0.08); }
+
+// ===================== LEVELS =====================
+const levels = [
+  {
+    recto: [
+      {x:0,y:H-40,w:W,h:40},
+      {x:100,y:520,w:150,h:16},
+      {x:320,y:440,w:140,h:16},
+      {x:560,y:360,w:140,h:16},
+      {x:60,y:280,w:130,h:16},
+      {x:300,y:200,w:160,h:16},
+    ],
+    verso: [
+      {x:0,y:H-40,w:W,h:40},
+      {x:240,y:500,w:150,h:16},
+      {x:480,y:420,w:150,h:16},
+      {x:700,y:340,w:150,h:16},
+      {x:380,y:260,w:170,h:16},
+      {x:680,y:180,w:190,h:16},
+    ],
+    start:{x:60,y:H-72},
+    exit:{x:760,y:140,w:70,h:70}
+  },
+  {
+    recto: [
+      {x:0,y:H-40,w:W,h:40},
+      {x:70,y:500,w:120,h:16},
+      {x:260,y:420,w:120,h:16},
+      {x:480,y:340,w:120,h:16},
+      {x:700,y:260,w:120,h:16},
+      {x:520,y:180,w:150,h:16},
+    ],
+    verso: [
+      {x:0,y:H-40,w:W,h:40},
+      {x:180,y:520,w:110,h:16},
+      {x:390,y:440,w:110,h:16},
+      {x:600,y:360,w:110,h:16},
+      {x:280,y:280,w:190,h:16},
+      {x:40,y:200,w:130,h:16},
+      {x:720,y:140,w:170,h:16},
+    ],
+    start:{x:60,y:H-72},
+    exit:{x:760,y:100,w:70,h:70}
+  },
+  {
+    recto: [
+      {x:0,y:H-40,w:W,h:40},
+      {x:90,y:520,w:100,h:16},
+      {x:280,y:440,w:100,h:16},
+      {x:470,y:360,w:100,h:16},
+      {x:660,y:280,w:100,h:16},
+      {x:380,y:200,w:120,h:16},
+    ],
+    verso: [
+      {x:0,y:H-40,w:W,h:40},
+      {x:190,y:500,w:110,h:16},
+      {x:400,y:420,w:110,h:16},
+      {x:610,y:340,w:110,h:16},
+      {x:110,y:260,w:150,h:16},
+      {x:540,y:180,w:150,h:16},
+      {x:330,y:100,w:190,h:16},
+    ],
+    start:{x:60,y:H-72},
+    exit:{x:390,y:60,w:80,h:70}
+  }
+];
+
+// ===================== STATE =====================
+let state = 'title';
+let levelIndex = 0;
+let side = 'recto';
+let player = {x:0,y:0,vx:0,vy:0,onGround:false,facing:1,walkFrame:0};
+let keys = {};
+let flipCooldown = 0;
+let flipAnim = 0;
+let flippingTo = null;
+let flipParticles = [];
+let particles = [];
+let stars = [];
+for(let i=0;i<80;i++) stars.push({x:Math.random()*W,y:Math.random()*H,s:Math.random()*1.6+0.4,ph:Math.random()*Math.PI*2});
+
+let level = null;
+let shake = 0;
+
+function loadLevel(i){
+  level = levels[i];
+  side = 'recto';
+  player.x = level.start.x;
+  player.y = level.start.y;
+  player.vx=0; player.vy=0;
+  player.onGround=false;
+  flipCooldown=0;
+  flipAnim=0;
+  flippingTo=null;
+  particles=[];
+  flipParticles=[];
+  shake=0;
+}
+
+function currentPlatforms(){ return side==='recto' ? level.recto : level.verso; }
+
+// ===================== INPUT =====================
+window.addEventListener('keydown', e=>{
+  keys[e.code]=true;
+  ensureAudio();
+  if(state==='title' && (e.code==='Space'||e.code==='Enter')){ state='playing'; loadLevel(0); sfxFlip(); }
+  if(state==='playing'){
+    if(e.code==='KeyE' || e.code==='ShiftLeft' || e.code==='ShiftRight'){
+      tryFlip();
+    }
+    if(e.code==='KeyR'){ loadLevel(levelIndex); }
+  }
+  if(state==='win' && (e.code==='Space'||e.code==='Enter')){
+    levelIndex++;
+    if(levelIndex>=levels.length){ state='complete'; }
+    else { loadLevel(levelIndex); state='playing'; }
+    sfxFlip();
+  }
+  if(state==='complete' && (e.code==='Space'||e.code==='Enter')){
+    levelIndex=0; loadLevel(0); state='playing'; sfxFlip();
+  }
+  if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) e.preventDefault();
+});
+window.addEventListener('keyup', e=>{ keys[e.code]=false; });
+
+function tryFlip(){
+  if(flipCooldown>0 || flippingTo) return;
+  flippingTo = side==='recto' ? 'verso' : 'recto';
+  flipAnim = 0;
+  sfxFlip();
+  // flip particles
+  for(let i=0;i<40;i++){
+    flipParticles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*2,vy:(Math.random()-0.5)*2,life:30,r:Math.random()*2+1});
+  }
+}
+
+// ===================== PHYSICS =====================
+function aabbOverlap(ax,ay,aw,ah,bx,by,bw,bh){
+  return ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by;
+}
+
+function resolveCollisions(plats){
+  // horizontal
+  player.x += player.vx;
+  for(const p of plats){
+    if(aabbOverlap(player.x,player.y,PLAYER_W,PLAYER_H,p.x,p.y,p.w,p.h)){
+      if(player.vx>0) player.x = p.x - PLAYER_W;
+      else if(player.vx<0) player.x = p.x + p.w;
+      player.vx=0;
+    }
+  }
+  // vertical
+  player.y += player.vy;
+  player.onGround=false;
+  for(const p of plats){
+    if(aabbOverlap(player.x,player.y,PLAYER_W,PLAYER_H,p.x,p.y,p.w,p.h)){
+      if(player.vy>0){ player.y = p.y - PLAYER_H; player.onGround=true; }
+      else if(player.vy<0){ player.y = p.y + p.h; }
+      player.vy=0;
+    }
+  }
+  // bounds
+  if(player.x<0) player.x=0;
+  if(player.x > W-PLAYER_W) player.x = W-PLAYER_W;
+  if(player.y > H+40){
+    sfxDie();
+    loadLevel(levelIndex);
+    shake=12;
+  }
+}
+
+function update(dt){
+  if(state!=='playing') return;
+  if(flippingTo){
+    flipAnim += 0.05;
+    if(flipAnim>=1){
+      side = flippingTo;
+      flippingTo=null;
+      flipAnim=0;
+      flipCooldown=24;
+      const plats=currentPlatforms();
+      for(const p of plats){
+        if(aabbOverlap(player.x,player.y,PLAYER_W,PLAYER_H,p.x,p.y,p.w,p.h)){
+          player.y = p.y - PLAYER_H;
+        }
+      }
+    }
+    // particles update
+    updateParticles();
+    return;
+  }
+  if(flipCooldown>0) flipCooldown--;
+
+  let move=0;
+  if(keys['ArrowLeft']||keys['KeyA']) move-=1;
+  if(keys['ArrowRight']||keys['KeyD']) move+=1;
+  const accel = player.onGround ? 1 : AIR_CONTROL;
+  player.vx += move*MOVE_SPEED*0.22*accel;
+  if(move===0) player.vx *= FRICTION;
+  player.vx = Math.max(-MOVE_SPEED, Math.min(MOVE_SPEED, player.vx));
+  if(player.onGround && (keys['Space']||keys['ArrowUp']||keys['KeyW'])){
+    player.vy = JUMP_VEL;
+    player.onGround=false;
+    keys['Space']=false; keys['ArrowUp']=false; keys['KeyW']=false;
+    spawnJumpDust();
+    sfxJump();
+  }
+  player.vy += GRAVITY;
+  if(player.vy>22) player.vy=22;
+
+  resolveCollisions(currentPlatforms());
+
+  if(move!==0) player.facing = move>0?1:-1;
+  if(Math.abs(player.vx)>0.5 && player.onGround) player.walkFrame += Math.abs(player.vx)*0.12;
+  else player.walkFrame *= 0.9;
+
+  updateParticles();
+
+  const ex = level.exit;
+  if(side==='verso' && aabbOverlap(player.x,player.y,PLAYER_W,PLAYER_H,ex.x,ex.y,ex.w,ex.h)){
+    state='win';
+    sfxWin();
+  }
+}
+
+function spawnJumpDust(){
+  for(let i=0;i<7;i++){
+    particles.push({x:player.x+PLAYER_W/2,y:player.y+PLAYER_H,vx:(Math.random()-0.5)*3.5,vy:-Math.random()*2.5-0.5,life:22,color:side==='recto'?'#3a2a1a':'#cfe',r:2.2});
+  }
+}
+
+function updateParticles(){
+  for(let i=particles.length-1;i>=0;i--){
+    const pt=particles[i];
+    pt.x+=pt.vx; pt.y+=pt.vy; pt.vy+=0.22; pt.life--;
+    if(pt.life<=0) particles.splice(i,1);
+  }
+  for(let i=flipParticles.length-1;i>=0;i--){
+    const pt=flipParticles[i];
+    pt.x+=pt.vx; pt.y+=pt.vy; pt.life--;
+    if(pt.life<=0) flipParticles.splice(i,1);
+  }
+}
+
+// ===================== RENDER =====================
+function drawRectoBg(){
+  ctx.fillStyle='#f4ecd8';
+  ctx.fillRect(0,0,W,H);
+  // texture speckles
+  for(let i=0;i<200;i++){
+    ctx.fillStyle=`rgba(120,90,50,${Math.random()*0.06})`;
+    ctx.fillRect(Math.random()*W,Math.random()*H,1,1);
+  }
+  ctx.strokeStyle='rgba(120,90,50,0.07)';
+  ctx.lineWidth=1;
+  for(let y=0;y<H;y+=26){
+    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+  }
+  ctx.strokeStyle='rgba(180,60,60,0.22)';
+  ctx.beginPath(); ctx.moveTo(58,0); ctx.lineTo(58,H); ctx.stroke();
+  const g=ctx.createLinearGradient(W-24,0,W,0);
+  g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,0.18)');
+  ctx.fillStyle=g; ctx.fillRect(W-24,0,24,H);
+  // page number
+  ctx.fillStyle='rgba(60,40,20,0.5)';
+  ctx.font='italic 12px Georgia';
+  ctx.textAlign='right';
+  ctx.fillText('— recto —', W-34, H-14);
+}
+
+function drawVersoBg(){
+  ctx.fillStyle='#15182a';
+  ctx.fillRect(0,0,W,H);
+  const t=Date.now()/1000;
+  for(const s of stars){
+    const a=0.4+0.6*Math.sin(t*1.2+s.ph);
+    ctx.fillStyle=`rgba(220,230,255,${a})`;
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.s,0,Math.PI*2); ctx.fill();
+  }
+  ctx.strokeStyle='rgba(100,130,190,0.07)';
+  ctx.lineWidth=1;
+  for(let y=0;y<H;y+=26){
+    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+  }
+  const g=ctx.createLinearGradient(0,0,24,0);
+  g.addColorStop(0,'rgba(0,0,0,0.2)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,24,H);
+  ctx.fillStyle='rgba(180,200,255,0.45)';
+  ctx.font='italic 12px Georgia';
+  ctx.textAlign='left';
+  ctx.fillText('— verso —', 34, H-14);
+}
+
+function drawPlatforms(plats, side){
+  for(const p of plats){
+    if(side==='recto'){
+      ctx.fillStyle='#6b4f2a';
+      ctx.fillRect(p.x,p.y,p.w,p.h);
+      ctx.fillStyle='#8a6a3a';
+      ctx.fillRect(p.x,p.y,p.w,3);
+      ctx.strokeStyle='rgba(40,30,20,0.45)';
+      ctx.lineWidth=1;
+      ctx.beginPath();
+      for(let i=0;i<p.w;i+=9){
+        ctx.moveTo(p.x+i, p.y+4);
+        ctx.lineTo(p.x+i+4, p.y+p.h-4);
+      }
+      ctx.stroke();
+    } else {
+      ctx.fillStyle='#252d4a';
+      ctx.fillRect(p.x,p.y,p.w,p.h);
+      ctx.shadowColor='#7af';
+      ctx.shadowBlur=10;
+      ctx.fillStyle='#9cf';
+      ctx.fillRect(p.x,p.y,p.w,2);
+      ctx.shadowBlur=0;
+      ctx.fillStyle='rgba(122,170,255,0.18)';
+      ctx.fillRect(p.x,p.y+2,p.w,p.h-2);
+    }
+  }
+}
+
+function drawStickman(p, side){
+  const x=p.x+PLAYER_W/2;
+  const col = side==='recto' ? '#1a1a1a' : '#eaf2ff';
+  ctx.strokeStyle=col;
+  ctx.lineWidth=2;
+  ctx.lineCap='round';
+  // head
+  ctx.beginPath(); ctx.arc(x, p.y+6, 6, 0, Math.PI*2); ctx.stroke();
+  // body
+  ctx.beginPath(); ctx.moveTo(x, p.y+12); ctx.lineTo(x, p.y+22); ctx.stroke();
+  // arms
+  const armSwing = Math.sin(p.walkFrame)*0.6;
+  const ax = p.facing>0 ? 8 : -8;
+  ctx.beginPath();
+  ctx.moveTo(x, p.y+14);
+  ctx.lineTo(x+ax, p.y+18 + Math.sin(armSwing)*3);
+  ctx.moveTo(x, p.y+14);
+  ctx.lineTo(x-ax*0.6, p.y+18 - Math.sin(armSwing)*3);
+  ctx.stroke();
+  // legs
+  const legSwing = Math.sin(p.walkFrame)*0.7;
+  ctx.beginPath();
+  ctx.moveTo(x, p.y+22);
+  ctx.lineTo(x + Math.sin(legSwing)*6*p.facing, p.y+PLAYER_H);
+  ctx.moveTo(x, p.y+22);
+  ctx.lineTo(x - Math.sin(legSwing)*6*p.facing, p.y+PLAYER_H);
+  ctx.stroke();
+  // eyes
+  ctx.fillStyle=col;
+  const ex = p.facing>0?2:-2;
+  ctx.beginPath(); ctx.arc(x+ex, p.y+5, 1.2,0,Math.PI*2); ctx.fill();
+  // mouth
+  ctx.beginPath();
+  ctx.arc(x+ex*0.5, p.y+7.5, 2, 0.1*Math.PI, 0.9*Math.PI);
+  ctx.stroke();
+}
+
+function drawExit(ex, side){
+  if(side!=='verso') return;
+  const t=Date.now()/400;
+  const pulse=0.5+0.5*Math.sin(t);
+  ctx.shadowColor='#ffd700';
+  ctx.shadowBlur=16+pulse*8;
+  ctx.fillStyle=`rgba(255,215,0,${0.15+pulse*0.15})`;
+  ctx.fillRect(ex.x,ex.y,ex.w,ex.h);
+  ctx.shadowBlur=0;
+  ctx.strokeStyle='#ffd700';
+  ctx.lineWidth=2;
+  ctx.strokeRect(ex.x,ex.y,ex.w,ex.h);
+  ctx.fillStyle='#ffd700';
+  ctx.font='bold 11px Georgia';
+  ctx.textAlign='center';
+  ctx.fillText('SORTIE', ex.x+ex.w/2, ex.y-8);
+  // arrow
+  ctx.beginPath();
+  ctx.moveTo(ex.x+ex.w/2, ex.y-2);
+  ctx.lineTo(ex.x+ex.w/2-6, ex.y-12);
+  ctx.lineTo(ex.x+ex.w/2+6, ex.y-12);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawFlipOverlay(){
+  if(!flippingTo) return;
+  const t = flipAnim;
+  // fade out current, fade in new via alpha of a full rect
+  const alpha = Math.sin(t*Math.PI);
+  ctx.fillStyle = `rgba(0,0,0,${0.35*alpha})`;
+  ctx.fillRect(0,0,W,H);
+  // page curl bar
+  const curlX = t < 0.5 ? W*(1-t*2) : 0;
+  const w = 60;
+  const grad = ctx.createLinearGradient(curlX,0,curlX+w,0);
+  grad.addColorStop(0,'rgba(255,255,255,0)');
+  grad.addColorStop(0.5,'rgba(255,255,255,0.15)');
+  grad.addColorStop(1,'rgba(0,0,0,0.25)');
+  ctx.fillStyle=grad;
+  ctx.fillRect(curlX,0,w,H);
+}
+
+function drawParticles(){
+  for(const pt of particles){
+    ctx.fillStyle=pt.color;
+    ctx.globalAlpha=Math.max(0,pt.life/22);
+    ctx.beginPath(); ctx.arc(pt.x,pt.y,pt.r,0,Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  for(const pt of flipParticles){
+    ctx.fillStyle = side==='recto' ? 'rgba(244,236,216,0.6)' : 'rgba(122,170,255,0.6)';
+    ctx.globalAlpha=Math.max(0,pt.life/30);
+    ctx.beginPath(); ctx.arc(pt.x,pt.y,pt.r,0,Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha=1;
+}
+
+function drawUI(){
+  const ui=document.getElementById('ui');
+  ui.innerHTML = `Niveau ${levelIndex+1}/${levels.length} &nbsp;|&nbsp; Face: <b>${side.toUpperCase()}</b> &nbsp;|&nbsp; Flèches/WASD: déplacer &nbsp; Espace/↑: sauter &nbsp; E/Shift: tourner la page &nbsp; R: recommencer`;
+}
+
+function render(){
+  ctx.save();
+  if(shake>0){ ctx.translate((Math.random()-0.5)*shake, (Math.random()-0.5)*shake); shake*=0.85; if(shake<0.5) shake=0; }
+  if(!level){
+    // title screen background
+    ctx.fillStyle='#0d0d0d';
+    ctx.fillRect(0,0,W,H);
+    ctx.restore();
+    return;
+  }
+  if(side==='recto') drawRectoBg(); else drawVersoBg();
+  const plats = currentPlatforms();
+  drawPlatforms(plats, side);
+  drawExit(level.exit, side);
+  if(state==='playing' || state==='win'){
+    drawStickman(player, side);
+  }
+  drawParticles();
+  drawFlipOverlay();
+  ctx.restore();
+}
+
+// ===================== MAIN LOOP =====================
+let last=performance.now();
+function loop(now){
+  const dt = Math.min((now-last)/16.67, 3);
+  last=now;
+  update(dt);
+  render();
+  drawUI();
+  const titleDiv=document.getElementById('title');
+  titleDiv.style.display = (state==='title')?'flex':'none';
+
+  if(state==='win'){
+    ctx.fillStyle='rgba(0,0,0,0.5)';
+    ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#fff';
+    ctx.font='bold 40px Georgia';
+    ctx.textAlign='center';
+    ctx.fillText('Niveau terminé !', W/2, H/2-20);
+    ctx.font='20px Georgia';
+    ctx.fillText('Espace pour continuer', W/2, H/2+20);
+  }
+  if(state==='complete'){
+    ctx.fillStyle='rgba(0,0,0,0.6)';
+    ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#ffd700';
+    ctx.font='bold 48px Georgia';
+    ctx.textAlign='center';
+    ctx.fillText('Bravo ! Livre terminé', W/2, H/2-20);
+    ctx.fillStyle='#fff';
+    ctx.font='20px Georgia';
+    ctx.fillText('Espace pour recommencer', W/2, H/2+20);
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
