@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("turn_page_f"):
+	if Input.is_action_just_pressed("turn_page_p"):
 		if currentTile == 1:
 			currentTile = 2
 			map_1.set_enabled(false)
