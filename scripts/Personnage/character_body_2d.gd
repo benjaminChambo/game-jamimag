@@ -28,6 +28,21 @@ var is_dashing: bool = false
 var dash_dir: Vector2 = Vector2.RIGHT
 var dash_timer: float = 0.0 
 
+# Constantes et variables pour le wall jump
+const NORMAL_GRAVITY = 9.8
+const WALL_GRAVITY = 3.0
+const WALL_JUMP_PUSH_FORCE = 80.0
+
+var wall_coyote = 0.0
+const WALL_COYOTE_TIME = 0.2
+
+var wall_jump_lock = 0.0
+const WALL_JUMP_LOCK_TIME = 0.05
+
+var look_dir_x = 1
+var direction_wall = Input.get_axis("left_q", "right_d")
+
+
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
@@ -55,6 +70,30 @@ func _physics_process(delta: float) -> void:
 		pass
 		
 	_dash_logic(delta)
+	
+	# Wall jump
+	if direction_wall and wall_jump_lock > 0.0:
+		wall_jump_lock -= delta
+		velocity.x = lerp(velocity.x, direction_wall * SPEED, velocity.x * 0.5)
+	elif direction_wall and wall_jump_lock <= 0.0:
+		velocity.x = lerp(velocity.x, direction_wall * SPEED, velocity.x)
+	
+	
+	if !is_on_floor() and velocity.y > 0 and is_on_wall() and velocity.x != 0:
+		look_dir_x = sign(velocity.x)
+		wall_coyote = WALL_COYOTE_TIME
+		velocity.y = WALL_GRAVITY
+	else:
+		wall_coyote -= delta
+		velocity.y += NORMAL_GRAVITY
+		
+	if is_on_floor() or wall_coyote > 0.0:
+		if Input.is_action_just_pressed("space_jump"):
+			velocity.y = JUMP_VELOCITY
+			if wall_coyote > 0.0:
+				velocity.x = -look_dir_x * WALL_JUMP_PUSH_FORCE
+				wall_jump_lock = WALL_JUMP_LOCK_TIME
+
 
 func _dash_logic(delta: float) -> void:
 
