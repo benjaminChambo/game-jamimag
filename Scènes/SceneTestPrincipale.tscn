@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b8wslvwx2ey08" path="res://Scènes/SceneNiveauTest.tscn" id="2_l22gy"]
 [ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
-[ext_resource type="AudioStream" uid="uid://xgnuatd2h7dn" path="res://SFX/Page_3.wav" id="5_crf24"]
 
 [node name="Démo" type="Node2D" unique_id=386771801]
 
@@ -19,8 +18,4 @@ bus = &"SFX"
 
 [node name="PageTurnSFX2" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=1985701167]
 stream = ExtResource("4_gux8m")
-bus = &"SFX"
-
-[node name="PageTurnSFX3" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=291942247]
-stream = ExtResource("5_crf24")
 bus = &"SFX"

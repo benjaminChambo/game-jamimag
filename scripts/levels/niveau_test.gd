@@ -23,9 +23,8 @@ func _physics_process(delta: float) -> void:
 			$PageTurnSFX.play()
 		if sfx_number == 2:
 			$PageTurnSFX2.play()
-		if sfx_number == 3:
-			$PageTurnSFX3.play()
-		sfx_number = randi_range(1,3)
+		sfx_number = randi_range(1,2)
+		
 		if currentTile == 1:
 			currentTile = 2
 			map_1.set_enabled(false)
