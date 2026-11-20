@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ds6v8eful05g0" path="res://Scènes/ScenePersonnage.tscn" id="1_34ld8"]
 [ext_resource type="PackedScene" uid="uid://b8wslvwx2ey08" path="res://Scènes/SceneNiveauTest.tscn" id="2_l22gy"]
+[ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
 
 [node name="Démo" type="Node2D" unique_id=386771801]
 
@@ -9,3 +10,7 @@
 position = Vector2(-207, -42)
 
 [node name="NiveauTest" parent="." unique_id=1747003562 instance=ExtResource("2_l22gy")]
+
+[node name="PageTurnSFX" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=669986421]
+stream = ExtResource("3_1gikw")
+bus = &"SFX"

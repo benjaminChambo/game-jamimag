@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	map_2.set_enabled(false)
 	pass
 
 @onready
@@ -17,6 +18,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("turn_page_f"):
+		$PageTurnSFX.play()
 		if currentTile == 1:
 			currentTile = 2
 			map_1.set_enabled(false)
