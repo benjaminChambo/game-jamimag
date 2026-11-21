@@ -12,8 +12,8 @@ var gravity = Vector2(0, 2000)
 #var current_air_jumps = 0
 
 # Variables for "game feel" techniques (we'll initialize them later)
-#var coyote_timer = 0.0
-#const COYOTE_TIME_THRESHOLD = 0.1 # 100 milliseconds of coyote time
+var coyote_timer = 0.0
+const COYOTE_TIME_THRESHOLD = 0.15 # 100 milliseconds of coyote time
 
 #var jump_buffer_timer = 0.0
 #const JUMP_BUFFER_TIME_THRESHOLD = 0.1 # 100 milliseconds for jump buffer
@@ -85,6 +85,15 @@ func _physics_process(delta: float) -> void:
 		pass
 		
 	_dash_logic(delta)
+	
+	# Coyote on floor mechanic
+	if is_on_floor():
+		coyote_timer = COYOTE_TIME_THRESHOLD
+	else:
+		if coyote_timer > 0.0:
+			if Input.is_action_just_pressed("space_jump"):
+				velocity.y = JUMP_VELOCITY
+		coyote_timer -= delta
 	
 	# Wall jump
 	if wall_coyote > 0.0:
