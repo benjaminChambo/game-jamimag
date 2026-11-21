@@ -5,19 +5,18 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -700.0
 
 # Gravity - you can get it from project settings or define it here
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = Vector2(0, 2000)
 
 # Other variables you might need
 #var air_jumps = 1         # For a double jump
 #var current_air_jumps = 0
 
 # Variables for "game feel" techniques (we'll initialize them later)
-#var coyote_timer = 0.0
-#const COYOTE_TIME_THRESHOLD = 0.1 # 100 milliseconds of coyote time
+var coyote_timer = 0.0
+const COYOTE_TIME_THRESHOLD = 0.15 # 100 milliseconds of coyote time
 
 #var jump_buffer_timer = 0.0
 #const JUMP_BUFFER_TIME_THRESHOLD = 0.1 # 100 milliseconds for jump buffer
-#
 
 # Constantes et variables pour le dash
 const DASH_AMT: float = 700.0
@@ -28,12 +27,42 @@ var is_dashing: bool = false
 var dash_dir: Vector2 = Vector2.RIGHT
 var dash_timer: float = 0.0 
 
+# Constantes et variables pour le wall jump
+const WALL_GRAVITY = 7000.0
+const WALL_JUMP_PUSH_FORCE = 450.0
+const WALL_JUMP_VELOCITY = -500.0
+
+var wall_coyote = 0.0
+const WALL_COYOTE_TIME = 0.2
+
+var wall_jump_lock = 0.0
+const WALL_JUMP_LOCK_TIME = 0.2
+
+var look_dir_x = 1
+var direction_wall = Input.get_axis("left_q", "right_d")
+
+
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	if !is_dashing:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
+		if !is_on_floor() and velocity.y > 0 and is_on_wall():
+			if get_wall_normal().x > 0 and Input.is_action_pressed("left_q"):
+				look_dir_x = -1
+				wall_coyote = WALL_COYOTE_TIME
+				velocity.y = WALL_GRAVITY * delta
+			elif get_wall_normal().x < 0 and Input.is_action_pressed("right_d"):
+				look_dir_x = 1
+				wall_coyote = WALL_COYOTE_TIME
+				velocity.y = WALL_GRAVITY * delta
+			else:
+				velocity += gravity * delta
+				wall_coyote -= delta
+		elif !is_on_floor():
+			velocity += gravity * delta
+			wall_coyote -= delta
+		else:
+			wall_coyote -= delta
 		
 	if is_on_floor():
 		if !is_dashing and !can_dash:
@@ -46,15 +75,35 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("left_q", "right_d")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		if wall_jump_lock <= 0:
+			if direction:
+				velocity.x = direction * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if Input.is_action_just_pressed("turn_page_p"):
 		pass
 		
 	_dash_logic(delta)
+	
+	# Coyote on floor mechanic
+	if is_on_floor():
+		coyote_timer = COYOTE_TIME_THRESHOLD
+	else:
+		if coyote_timer > 0.0:
+			if Input.is_action_just_pressed("space_jump"):
+				velocity.y = JUMP_VELOCITY
+		coyote_timer -= delta
+	
+	# Wall jump
+	if wall_coyote > 0.0:
+		if Input.is_action_just_pressed("space_jump"):
+			velocity.y = WALL_JUMP_VELOCITY
+			wall_jump_lock = WALL_JUMP_LOCK_TIME
+	
+	if wall_jump_lock > 0.0:
+		wall_jump_lock -= delta
+		velocity.x = -look_dir_x * WALL_JUMP_PUSH_FORCE
 
 func _dash_logic(delta: float) -> void:
 
