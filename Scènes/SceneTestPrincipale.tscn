@@ -6,8 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="Texture2D" uid="uid://bue5qfadyaf8k" path="res://icon.svg" id="6_crf24"]
+[ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
+[ext_resource type="AudioStream" uid="uid://0vvhhpum844s" path="res://SFX/Page_4.wav" id="7_3lyba"]
 [ext_resource type="Script" uid="uid://cf3q4sisaudaq" path="res://scripts/Personnage/area_to_right.gd" id="7_ih0dn"]
+[ext_resource type="AudioStream" uid="uid://ci8jo806vaaie" path="res://SFX/Page_5.wav" id="8_bd8q8"]
 [ext_resource type="Script" uid="uid://dwwa5rh2r5rpf" path="res://scripts/levels/area_change_cam.gd" id="8_i6fb1"]
+[ext_resource type="AudioStream" uid="uid://bo78rs48neber" path="res://SFX/Page_6.wav" id="9_jryrq"]
 [ext_resource type="Script" uid="uid://dul7ycfmos4pw" path="res://scripts/levels/barrier.gd" id="9_nwg7s"]
 [ext_resource type="Script" uid="uid://uhcya4s2qiub" path="res://scripts/levels/reboot_area.gd" id="10_i6fb1"]
 
@@ -317,6 +321,22 @@ bus = &"SFX"
 
 [node name="PageTurnSFX2" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=1985701167]
 stream = ExtResource("4_gux8m")
+bus = &"SFX"
+
+[node name="PageTurnSFX3" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=107448836]
+stream = ExtResource("6_nwg7s")
+bus = &"SFX"
+
+[node name="PageTurnSFX4" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=1509408423]
+stream = ExtResource("7_3lyba")
+bus = &"SFX"
+
+[node name="PageTurnSFX5" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=1737793491]
+stream = ExtResource("8_bd8q8")
+bus = &"SFX"
+
+[node name="PageTurnSFX6" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=915882636]
+stream = ExtResource("9_jryrq")
 bus = &"SFX"
 
 [node name="TML" type="TileMapLayer" parent="NiveauTest" unique_id=513280849]
