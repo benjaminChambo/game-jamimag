@@ -7,9 +7,9 @@ func _ready() -> void:
 	pass
 
 @onready
-var map_1 = get_node("TileMapLayer")
+var map_1 = $TML
 @onready
-var map_2 = get_node("TileMapLayer2")
+var map_2 = $TML2
 var currentTile = 1
 var sfx_number = 1
 

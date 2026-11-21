@@ -11,9 +11,6 @@ height = 76.0
 script = ExtResource("1_jtnla")
 metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=293621015]
-position = Vector2(0, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1429463401]
 position = Vector2(0.6250229, 12.312508)
 shape = SubResource("CapsuleShape2D_a28sk")
