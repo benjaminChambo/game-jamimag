@@ -7,7 +7,7 @@
 radius = 20.0
 height = 76.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1304069712]
+[node name="Joueur" type="CharacterBody2D" unique_id=1304069712]
 script = ExtResource("1_jtnla")
 metadata/_edit_group_ = true
 
