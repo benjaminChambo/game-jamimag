@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://0vvhhpum844s" path="res://SFX/Page_4.wav" id="6_ih0dn"]
 [ext_resource type="AudioStream" uid="uid://ci8jo806vaaie" path="res://SFX/Page_5.wav" id="7_i6fb1"]
 [ext_resource type="AudioStream" uid="uid://bo78rs48neber" path="res://SFX/Page_6.wav" id="8_nwg7s"]
+[ext_resource type="PackedScene" uid="uid://0kymcfwr3qrg" path="res://Scènes/page_turn_anim.tscn" id="9_ih0dn"]
 
 [node name="Démo" type="Node2D" unique_id=386771801]
 
@@ -39,3 +40,6 @@ bus = &"SFX"
 [node name="PageTurnSFX6" type="AudioStreamPlayer2D" parent="NiveauTest" unique_id=1249632146]
 stream = ExtResource("8_nwg7s")
 bus = &"SFX"
+
+[node name="AnimatableBody2D" parent="." unique_id=1939239938 instance=ExtResource("9_ih0dn")]
+root_node = NodePath("")
