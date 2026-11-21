@@ -4,19 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://7lnj6vfcs818" path="res://design/theme_aquatique.jpg" id="2_ngrp0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28sk"]
-radius = 20.0
-height = 76.0
+height = 34.0
 
-[node name="Joueur" type="CharacterBody2D" unique_id=1304069712]
+[node name="Joueur" type="CharacterBody2D" unique_id=1304069712 groups=["joueur"]]
 script = ExtResource("1_jtnla")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1429463401]
-position = Vector2(0.6250229, 12.312508)
+position = Vector2(-8, 31)
 shape = SubResource("CapsuleShape2D_a28sk")
 debug_color = Color(0.2901961, 0.6392157, 0.3019608, 0.90588236)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=602518528]
-position = Vector2(0.6249924, 12.312508)
-scale = Vector2(0.022332128, 0.033669457)
+position = Vector2(-8.000002, 31.312506)
+scale = Vector2(0.011990409, 0.016052393)
 texture = ExtResource("2_ngrp0")

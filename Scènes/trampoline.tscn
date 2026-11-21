@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://n1yu6ruxqko3"]
+
+[ext_resource type="Texture2D" uid="uid://coun2w7nt3wuw" path="res://godot_tile_assets/Trampoline.png" id="1_3eguw"]
+[ext_resource type="Texture2D" uid="uid://cq4geg12vyc4h" path="res://godot_tile_assets/Trampoline-animation.png" id="2_ssv0t"]
+[ext_resource type="Script" uid="uid://e6avw6ayy0a6" path="res://scripts/objets/trampoline.gd" id="3_1feu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js0jl"]
+size = Vector2(13, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wa56"]
+atlas = ExtResource("2_ssv0t")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1feu0"]
+atlas = ExtResource("2_ssv0t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggrc4"]
+atlas = ExtResource("2_ssv0t")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk38p"]
+atlas = ExtResource("2_ssv0t")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt6sv"]
+atlas = ExtResource("2_ssv0t")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js0jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3eguw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wa56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1feu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggrc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk38p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt6sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wa56")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 20.0
+}]
+
+[node name="trampoline" type="Area2D" unique_id=129003110]
+script = ExtResource("3_1feu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1685499883]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_js0jl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1833376092]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(0.15624999, 0.15625)
+sprite_frames = SubResource("SpriteFrames_js0jl")
+animation = &"jump"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

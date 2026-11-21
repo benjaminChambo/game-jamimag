@@ -134,4 +134,5 @@ func _dash_logic(delta: float) -> void:
 
 	move_and_slide()
 	
-	
+func bounce(force: float):
+	velocity.y = force
