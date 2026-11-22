@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cogaowbr38npv"
-path="res://.godot/imported/spritesheet_stickman_128x128_9frames.png-14dbd5562d74f62f894911565847ea28.ctex"
+uid="uid://bxtvubrawnvcv"
+path="res://.godot/imported/tileset_ocean.png-b98d1fd7b000a81352be1b4878576104.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spritesheet_stickman_128x128_9frames.png"
-dest_files=["res://.godot/imported/spritesheet_stickman_128x128_9frames.png-14dbd5562d74f62f894911565847ea28.ctex"]
+source_file="res://godot_tile_assets/tileset_ocean.png"
+dest_files=["res://.godot/imported/tileset_ocean.png-b98d1fd7b000a81352be1b4878576104.ctex"]
 
 [params]
 
