@@ -7,6 +7,7 @@
 height = 34.0
 
 [node name="Joueur" type="CharacterBody2D" unique_id=1304069712 groups=["joueur"]]
+z_index = 5
 script = ExtResource("1_jtnla")
 metadata/_edit_group_ = true
 

@@ -107,7 +107,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"PageTurn",
-"speed": 18.0
+"speed": 25.0
 }]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_epypp"]
