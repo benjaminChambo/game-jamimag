@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b8wslvwx2ey08" path="res://Scènes/SceneNiveauTest.tscn" id="2_l22gy"]
 [ext_resource type="Texture2D" uid="uid://ddsoq74yivvji" path="res://art/page_turn_full.png" id="2_v45tl"]
 [ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
-[ext_resource type="Script" uid="uid://cotm54tp1x4oi" path="res://Scènes/animated_sprite_2d.gd" id="3_2ru4x"]
+[ext_resource type="Script" uid="uid://cotm54tp1x4oi" path="res://Scènes/page_turn_animation.gd" id="3_2ru4x"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="Texture2D" uid="uid://bue5qfadyaf8k" path="res://icon.svg" id="6_crf24"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
@@ -408,7 +408,7 @@ limit_right = 624
 limit_bottom = 367
 script = ExtResource("2_gux8m")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=381243398]
+[node name="PageTurnAnim" type="AnimatedSprite2D" parent="." unique_id=381243398]
 position = Vector2(-20.499992, 40.999985)
 scale = Vector2(1.2591465, 0.72619045)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -496,4 +496,5 @@ shape = SubResource("RectangleShape2D_4newj")
 [node name="trampoline" parent="." unique_id=129003110 instance=ExtResource("15_jryrq")]
 position = Vector2(162, 230)
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
+[connection signal="animation_finished" from="PageTurnAnim" to="PageTurnAnim" method="_on_animation_finished"]
+[connection signal="body_entered" from="NiveauTest/ToRight" to="NiveauTest/ToRight" method="_on_body_entered"]
