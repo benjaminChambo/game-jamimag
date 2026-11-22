@@ -90,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l4cbi")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"anim",
 "speed": 10.0
 }]
@@ -98,7 +98,8 @@ animations = [{
 [node name="OuvertureBook" type="AnimatedSprite2D" unique_id=347624594]
 sprite_frames = SubResource("SpriteFrames_d7522")
 animation = &"anim"
-frame_progress = 0.71603703
+frame = 11
+frame_progress = 1.0
 script = ExtResource("2_a4xdu")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
