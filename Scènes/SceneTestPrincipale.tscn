@@ -549,15 +549,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
-position = Vector2(13595, -5815)
+position = Vector2(-129, -4992)
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=980178254]
 position = Vector2(2647, -1600)
 zoom = Vector2(0.3, 0.3)
-limit_left = 13376
-limit_top = -5859
-limit_right = 16757
-limit_bottom = -4184
+limit_left = -389
+limit_top = -5727
+limit_right = 2992
+limit_bottom = -4052
 script = ExtResource("2_gux8m")
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="." unique_id=381243398]

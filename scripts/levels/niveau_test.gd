@@ -1,10 +1,22 @@
 extends Node2D
 
-
+var stop = false
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	map_2.set_enabled(false)
-	pass
+	get_node("../Page1/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page1/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page2/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page2/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page3/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page3/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page4/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page4/ToRight2").corps_detecte.connect(_stop)
+
+func _stop():
+	stop = true
+	await get_tree().create_timer(4.5).timeout
+	stop = false
 
 @onready
 var map_1 = $TML
@@ -18,6 +30,9 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
+	if stop:
+		return
+		
 	if Input.is_action_just_pressed("turn_page_p"):
 		if sfx_number == 1:
 			$PageTurnSFX.play()

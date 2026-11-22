@@ -12,6 +12,12 @@ func _process(_delta):
 func _ready():
 	get_node("../Page1/ToRight").corps_detecte.connect(_go_right)
 	get_node("../Page1/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page2/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page2/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page3/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page3/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page4/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page4/ToRight2").corps_detecte.connect(_go_right)
 
 func _go_right():
 	suivre_joueur = false

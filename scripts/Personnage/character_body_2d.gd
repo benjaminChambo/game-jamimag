@@ -1,5 +1,22 @@
 extends CharacterBody2D
 
+var stop = false
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	get_node("../Page1/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page1/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page2/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page2/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page3/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page3/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page4/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page4/ToRight2").corps_detecte.connect(_stop)
+func _stop():
+	stop = true
+	await get_tree().create_timer(4.5).timeout
+	stop = false
+
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 500.0
@@ -47,6 +64,8 @@ var wall_jump_lock_anim = 0.0
 const WALL_JUMP_LOCK_ANIM_TIME = 0.2
 
 func _physics_process(delta: float) -> void:
+	if stop :
+		return
 	# Get the input direction and handle the movement/deceleration
 	var direction = Input.get_axis("left_q", "right_d")
 	
