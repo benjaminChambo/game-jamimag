@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://debt1gwgww541"
-path="res://.godot/imported/godot_symbol.png-eb9e35449fe4ea0828a01abc627086a2.ctex"
+uid="uid://cogaowbr38npv"
+path="res://.godot/imported/spritesheet_stickman_128x128_9frames.png-14dbd5562d74f62f894911565847ea28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/godot_symbol.png"
-dest_files=["res://.godot/imported/godot_symbol.png-eb9e35449fe4ea0828a01abc627086a2.ctex"]
+source_file="res://spritesheet_stickman_128x128_9frames.png"
+dest_files=["res://.godot/imported/spritesheet_stickman_128x128_9frames.png-14dbd5562d74f62f894911565847ea28.ctex"]
 
 [params]
 

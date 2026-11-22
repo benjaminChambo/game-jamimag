@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ds6v8eful05g0"]
 
-[ext_resource type="Script" uid="uid://hw2o0473gb7h" path="res://scripts/Personnage/character_body_2d.gd" id="1_jtnla"]
+[ext_resource type="Script" uid="uid://52uqjeasuisi" path="res://scripts/Personnage/character_body_2d.gd" id="1_jtnla"]
 [ext_resource type="Texture2D" uid="uid://7lnj6vfcs818" path="res://design/theme_aquatique.jpg" id="2_ngrp0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28sk"]
