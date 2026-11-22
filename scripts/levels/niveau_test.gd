@@ -68,8 +68,10 @@ func _physics_process(_delta: float) -> void:
 				get_node("../Page5/TML_chaud/FondChaud5").show()
 			elif page == 6:
 				get_node("../Page6/TML_chaud/FondChaud6").show()
-			else:
+			elif page == 7:
 				get_node("../Page7/TML_chaud/FondChaud7").show()
+			else:
+				get_node("../Page8/TML_chaud/FondChaud8").show()
 		elif currentTile == 2:
 			currentTile = 1
 			map_2.set_enabled(false)
@@ -86,8 +88,10 @@ func _physics_process(_delta: float) -> void:
 				get_node("../Page5/TML_froid/FondFroid5").show()
 			elif page == 6:
 				get_node("../Page6/TML_froid/FondFroid6").show()
-			else:
+			elif page == 7:
 				get_node("../Page7/TML_froid/FondFroid7").show()
+			else:
+				get_node("../Page8/TML_froid/FondFroid8").show()
 
 
 func hide_all():
@@ -103,5 +107,7 @@ func hide_all():
 	get_node("../Page5/TML_froid/FondFroid5").hide()
 	get_node("../Page6/TML_chaud/FondChaud6").hide()
 	get_node("../Page6/TML_froid/FondFroid6").hide()
-	get_node("../Page7/TML_chaud/FondChaud7").show()
+	get_node("../Page7/TML_chaud/FondChaud7").hide()
 	get_node("../Page7/TML_froid/FondFroid7").hide()
+	get_node("../Page8/TML_chaud/FondChaud8").hide()
+	get_node("../Page8/TML_froid/FondFroid8").hide()

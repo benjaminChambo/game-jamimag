@@ -82,8 +82,10 @@ func respawn():
 		self.global_position = Vector2(13603.0, -5605.0)
 	elif page == 6:
 		self.global_position = Vector2(17128.0, -4270.0)
-	else:
+	elif page == 7:
 		self.global_position = Vector2(20584.0, -5366.0)
+	else:
+		self.global_position = Vector2(48482.0, -5580.0)
 
 func _physics_process(delta: float) -> void:
 	if stop :
