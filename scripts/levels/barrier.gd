@@ -17,5 +17,5 @@ func _go_right():
 func _reboot():
 	set_deferred("disabled", true)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

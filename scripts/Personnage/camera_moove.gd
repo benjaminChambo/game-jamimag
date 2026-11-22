@@ -5,7 +5,7 @@ var suivre_joueur = true
 @onready var joueur = get_parent().get_node("CharacterBody2D")
 @export var taille_niveau:int = 1280
 
-func _process(delta):
+func _process(_delta):
 	if suivre_joueur:
 		global_position = joueur.global_position
 # Called when the node enters the scene tree for the first time.

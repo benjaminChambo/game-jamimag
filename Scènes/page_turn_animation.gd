@@ -4,8 +4,9 @@ var recto = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide()
-	pass # Replace with function body.
+	hide()  # Cache l'anim au début
+	get_node("../NiveauTest/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../NiveauTest/ToRight2").corps_detecte.connect(_move_anim)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
@@ -16,8 +17,16 @@ func _physics_process(_delta: float) -> void:
 		else:
 			flip_h = true
 			recto = true
-		show()
+		show() # Fais apparaître l'anim
 		play("PageTurn")
+		if !recto:
+			$AnimationPlayer.play("move_anim_right")
+		else:
+			$AnimationPlayer.play("move_anim_left")
 
 func _on_animation_finished() -> void:
-	hide() # Replace with function body.
+	hide() # Recache quand l'anim est terminée
+	
+func _move_anim():
+	offset.x += 540
+	recto = true
