@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dq2l0otst4184"]
+
+[ext_resource type="Texture2D" uid="uid://b20o00x2oee80" path="res://art/ouverture_book_full.png" id="1_wi2wk"]
+[ext_resource type="Script" uid="uid://bvwvnvcnhwukf" path="res://Scripts/ouverture_book.gd" id="2_a4xdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yog63"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(0, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfbvx"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(984, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb64d"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(1968, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy4m2"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(2952, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv234"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(3936, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1bm"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(4920, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8btl6"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(0, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05tag"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(984, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iucnd"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(1968, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5pwk"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(2952, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7xdp"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(3936, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4cbi"]
+atlas = ExtResource("1_wi2wk")
+region = Rect2(4920, 672, 984, 672)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7522"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yog63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfbvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb64d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy4m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv234")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq1bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8btl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05tag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iucnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5pwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7xdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4cbi")
+}],
+"loop": 1,
+"name": &"anim",
+"speed": 10.0
+}]
+
+[node name="OuvertureBook" type="AnimatedSprite2D" unique_id=347624594]
+sprite_frames = SubResource("SpriteFrames_d7522")
+animation = &"anim"
+frame_progress = 0.71603703
+script = ExtResource("2_a4xdu")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
