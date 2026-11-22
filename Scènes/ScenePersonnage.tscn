@@ -19,6 +19,7 @@ shape = SubResource("CapsuleShape2D_a28sk")
 debug_color = Color(0.2901961, 0.6392157, 0.3019608, 0.90588236)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=602518528]
+z_index = 5
 position = Vector2(33, -25.999998)
 scale = Vector2(0.75, 1.09375)
 texture = ExtResource("2_ckidn")

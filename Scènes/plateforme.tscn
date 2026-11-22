@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b6yv13s0eydv6"]
+
+[ext_resource type="Texture2D" uid="uid://bma0knjpph4l0" path="res://godot_tile_assets/pont.png" id="1_ye15o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js0jl"]
+size = Vector2(64, 21)
+
+[node name="plateforme" type="AnimatableBody2D" unique_id=445854361]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=371429832]
+texture = ExtResource("1_ye15o")
+region_enabled = true
+region_rect = Rect2(0, 0, 63.928425, 22.670902)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799749614]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_js0jl")
+one_way_collision = true
