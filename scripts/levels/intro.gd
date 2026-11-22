@@ -4,9 +4,10 @@ extends CanvasLayer
 @onready var texte = $Texte
 
 var textes = [
-	"Il y a bien longtemps...",
-	"Un monde oublié de tous...",
-	"Une histoire sur le point de commencer."
+	"Tient !?",
+	"Qu'est ce que fait notre cahier de dessin ici ?",
+	"Ça remonte à si longtemps...",
+	"Si seulement je pouvais faire un dernier dessin avec lui..."
 ]
 
 func _ready():

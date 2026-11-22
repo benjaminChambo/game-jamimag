@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var page = 1
 var stop = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 	get_node("../Page4/ToRight2").corps_detecte.connect(_stop)
 func _stop():
 	stop = true
+	page += 1
 	await get_tree().create_timer(4.5).timeout
 	stop = false
 
