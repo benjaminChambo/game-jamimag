@@ -21,6 +21,9 @@ func _stop():
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+const LIMITE_DASH = 12
+const LIMITE_WALL_JUMP = 8
+
 const SPEED = 500.0
 const JUMP_VELOCITY = -1000.0
 
@@ -40,6 +43,7 @@ const COYOTE_TIME_THRESHOLD = 0.15 # 100 milliseconds of coyote time
 
 # Constantes et variables pour le dash
 const DASH_AMT: float = 1000.0
+const UP_DASH_AMT: float = 750.0
 const DASH_TIME:float = 0.20
 
 var can_dash: bool = true
@@ -86,7 +90,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("dash")
 			else:
 				animated_sprite.play("run")
-	elif is_on_wall():
+	elif is_on_wall() and page >= LIMITE_WALL_JUMP:
 		animated_sprite.play("wall_slide")
 	elif wall_coyote > 0.0 or wall_jump_lock_anim > 0.0:
 		if Input.is_action_just_pressed("space_jump"):
@@ -108,7 +112,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if !is_dashing:
-		if !is_on_floor() and velocity.y > 0 and is_on_wall():
+		if !is_on_floor() and velocity.y > 0 and is_on_wall() and page >= LIMITE_WALL_JUMP:
 			if get_wall_normal().x > 0 and Input.is_action_pressed("left_q"):
 				look_dir_x = -1
 				wall_coyote = WALL_COYOTE_TIME
@@ -175,7 +179,7 @@ func _dash_logic(delta: float) -> void:
 	if input_dir.x != 0:
 		dash_dir.x = input_dir.x
 
-	if can_dash and Input.is_action_just_pressed("dash_o"):
+	if can_dash and Input.is_action_just_pressed("dash_o") and page >= LIMITE_DASH:
 		var final_dash_dir: Vector2 = dash_dir
 		if input_dir.y != 0 and input_dir.x == 0:
 			final_dash_dir.x = 0
@@ -184,9 +188,11 @@ func _dash_logic(delta: float) -> void:
 		can_dash = false
 		is_dashing = true
 		dash_timer = DASH_TIME
-
-		velocity = final_dash_dir * DASH_AMT
-
+		
+		if final_dash_dir == Vector2(0, -1):
+			velocity = final_dash_dir * UP_DASH_AMT
+		else:
+			velocity = final_dash_dir * DASH_AMT
 	if is_dashing:
 		dash_timer -= delta
 		if dash_timer <= 0.0:
