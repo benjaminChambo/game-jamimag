@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bowmxpddf13wr" path="res://art/Fond/fond_froid.png" id="3_i0y3o"]
 [ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
+[ext_resource type="PackedScene" uid="uid://dq2l0otst4184" path="res://Scènes/ouverture_book.tscn" id="5_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
 [ext_resource type="Texture2D" uid="uid://b56th37hu8bv" path="res://godot_tile_assets/tile_map_froid/TILEMAPFROID.png" id="6_v45tl"]
 [ext_resource type="AudioStream" uid="uid://0vvhhpum844s" path="res://SFX/Page_4.wav" id="7_3lyba"]
@@ -673,6 +674,10 @@ limit_top = -5785
 limit_right = 48220
 limit_bottom = -4110
 script = ExtResource("2_gux8m")
+
+[node name="OuvertureBook" parent="." unique_id=347624594 instance=ExtResource("5_0c7d2")]
+position = Vector2(-534, -4928)
+scale = Vector2(8.661932, 3.697897)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="." unique_id=381243398]
 position = Vector2(-1794, -3303.5)
