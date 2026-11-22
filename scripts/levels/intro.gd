@@ -10,6 +10,7 @@ var textes = [
 ]
 
 func _ready():
+	hide()
 	jouer_intro()
 
 
