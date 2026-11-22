@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dsjhl4lw0ivqy"]
 
+[ext_resource type="Script" uid="uid://b0kchfk28uar0" path="res://scripts/levels/intro.gd" id="1_2ru4x"]
 [ext_resource type="PackedScene" uid="uid://ds6v8eful05g0" path="res://Scènes/ScenePersonnage.tscn" id="1_34ld8"]
 [ext_resource type="Script" uid="uid://dgm73bueb71fm" path="res://scripts/Personnage/camera_moove.gd" id="2_gux8m"]
 [ext_resource type="PackedScene" uid="uid://b8wslvwx2ey08" path="res://Scènes/SceneNiveauTest.tscn" id="2_l22gy"]
@@ -198,6 +199,29 @@ size = Vector2(4, 128)
 size = Vector2(4, 124)
 
 [node name="Démo" type="Node2D" unique_id=386771801]
+
+[node name="Intro" type="CanvasLayer" parent="." unique_id=2029384067]
+script = ExtResource("1_2ru4x")
+
+[node name="Fond" type="ColorRect" parent="Intro" unique_id=240137365]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Texte" type="Label" parent="Intro" unique_id=1140804035]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Placeholder, placeholder
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
 position = Vector2(-250, -20)
