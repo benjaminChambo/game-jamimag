@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://e6avw6ayy0a6" path="res://scripts/objets/trampoline.gd" id="3_1feu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js0jl"]
-size = Vector2(67, 21)
+size = Vector2(67, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wa56"]
 atlas = ExtResource("2_ssv0t")
@@ -65,7 +65,7 @@ animations = [{
 script = ExtResource("3_1feu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1685499883]
-position = Vector2(1, 1.5)
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_js0jl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1833376092]
