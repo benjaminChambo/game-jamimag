@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bma0knjpph4l0" path="res://godot_tile_assets/pont.png" id="11_nor71"]
 [ext_resource type="PackedScene" uid="uid://n1yu6ruxqko3" path="res://Scènes/trampoline.tscn" id="15_jryrq"]
 [ext_resource type="PackedScene" uid="uid://b6yv13s0eydv6" path="res://Scènes/plateforme.tscn" id="23_cpo65"]
+[ext_resource type="PackedScene" uid="uid://bghf1gykm28ba" path="res://Scènes/killzone.tscn" id="27_i0y3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72ywm"]
 atlas = ExtResource("2_v45tl")
@@ -552,7 +553,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FondBlanc" type="Sprite2D" parent="." unique_id=1413022240]
-position = Vector2(-770, -1307)
+position = Vector2(-1092, -1451)
 texture = ExtResource("2_1hgg1")
 
 [node name="FondFroid" type="Sprite2D" parent="." unique_id=271851666]
@@ -968,5 +969,8 @@ position = Vector2(21349, -4724)
 
 [node name="trampoline4" parent="." unique_id=170681301 instance=ExtResource("15_jryrq")]
 position = Vector2(21160, -4055)
+
+[node name="Killzone" parent="." unique_id=2082976846 instance=ExtResource("27_i0y3o")]
+position = Vector2(-950, -3794)
 
 [connection signal="animation_finished" from="PageTurnAnim" to="PageTurnAnim" method="_on_animation_finished"]
