@@ -19,9 +19,9 @@ func _stop():
 	stop = false
 
 @onready
-var map_1 = $TML
+var map_1 = $TML_froid
 @onready
-var map_2 = $TML2
+var map_2 = $TML_chaud
 var currentTile = 1
 var sfx_number = 1
 
@@ -52,7 +52,11 @@ func _physics_process(_delta: float) -> void:
 			currentTile = 2
 			map_1.set_enabled(false)
 			map_2.set_enabled(true)
+			$TML_froid/FondFroid.z_index = -2
+			$TML_chaud/FondChaud.z_index = -1
 		elif currentTile == 2:
 			currentTile = 1
 			map_2.set_enabled(false)
 			map_1.set_enabled(true)
+			$TML_chaud/FondChaud.z_index = -2
+			$TML_froid/FondFroid.z_index = -1

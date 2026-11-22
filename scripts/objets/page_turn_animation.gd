@@ -28,5 +28,5 @@ func _on_animation_finished() -> void:
 	hide() # Recache quand l'anim est terminée
 	
 func _move_anim():
-	offset.x += 3392
+	offset.x += 4200
 	recto = true
