@@ -4,9 +4,9 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("joueur"):
-		if body.global_position.y < global_position.y:
-			body.bounce(-2000)
-			animated_sprite_2d.play("jump")
+		#if body.global_position.y < global_position.y:
+		body.bounce(-2000)
+		animated_sprite_2d.play("jump")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "jump":

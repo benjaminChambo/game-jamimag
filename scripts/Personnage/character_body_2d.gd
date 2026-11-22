@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 				look_dir_x = 1
 				wall_coyote = WALL_COYOTE_TIME
 				velocity.y = WALL_GRAVITY * delta
-			else:
+			elif velocity.y:
 				velocity += gravity * delta
 				wall_coyote -= delta
 		elif !is_on_floor():
