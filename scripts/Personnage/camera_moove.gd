@@ -10,8 +10,8 @@ func _process(_delta):
 		global_position = joueur.global_position
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("../NiveauTest/ToRight").corps_detecte.connect(_go_right)
-	get_node("../NiveauTest/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page1/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page1/ToRight2").corps_detecte.connect(_go_right)
 
 func _go_right():
 	suivre_joueur = false

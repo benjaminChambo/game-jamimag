@@ -5,8 +5,8 @@ var recto = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()  # Cache l'anim au début
-	get_node("../NiveauTest/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../NiveauTest/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page1/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page1/ToRight2").corps_detecte.connect(_move_anim)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
