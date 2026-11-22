@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b0kchfk28uar0" path="res://scripts/levels/intro.gd" id="1_2ru4x"]
 [ext_resource type="PackedScene" uid="uid://ds6v8eful05g0" path="res://Scènes/ScenePersonnage.tscn" id="1_34ld8"]
+[ext_resource type="Texture2D" uid="uid://d18mi8bvwvgt0" path="res://art/Fond/fond_blanc.png" id="2_1hgg1"]
 [ext_resource type="Script" uid="uid://dgm73bueb71fm" path="res://scripts/Personnage/camera_moove.gd" id="2_gux8m"]
 [ext_resource type="PackedScene" uid="uid://b8wslvwx2ey08" path="res://Scènes/SceneNiveauTest.tscn" id="2_l22gy"]
 [ext_resource type="Texture2D" uid="uid://ddsoq74yivvji" path="res://art/page_turn_full.png" id="2_v45tl"]
 [ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
 [ext_resource type="Script" uid="uid://cotm54tp1x4oi" path="res://Scènes/page_turn_animation.gd" id="3_2ru4x"]
+[ext_resource type="Texture2D" uid="uid://bowmxpddf13wr" path="res://art/Fond/fond_froid.png" id="3_i0y3o"]
+[ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
 [ext_resource type="Texture2D" uid="uid://b56th37hu8bv" path="res://godot_tile_assets/tile_map_froid/TILEMAPFROID.png" id="6_v45tl"]
@@ -547,6 +550,18 @@ text = "test
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FondBlanc" type="Sprite2D" parent="." unique_id=1413022240]
+position = Vector2(-770, -1307)
+texture = ExtResource("2_1hgg1")
+
+[node name="FondFroid" type="Sprite2D" parent="." unique_id=271851666]
+position = Vector2(663, -1379)
+texture = ExtResource("3_i0y3o")
+
+[node name="FondChaud" type="Sprite2D" parent="." unique_id=1664838431]
+position = Vector2(2233, -1301)
+texture = ExtResource("4_0c7d2")
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
 position = Vector2(-129, -4992)
