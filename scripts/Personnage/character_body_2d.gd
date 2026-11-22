@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -1000.0
@@ -33,7 +34,7 @@ const WALL_JUMP_PUSH_FORCE = 550.0
 const WALL_JUMP_VELOCITY = -700.0
 
 var wall_coyote = 0.0
-const WALL_COYOTE_TIME = 0.2
+const WALL_COYOTE_TIME = 0.1
 
 var wall_jump_lock = 0.0
 const WALL_JUMP_LOCK_TIME = 0.2
@@ -41,9 +42,49 @@ const WALL_JUMP_LOCK_TIME = 0.2
 var look_dir_x = 1
 var direction_wall = Input.get_axis("left_q", "right_d")
 
+# Pour anim wall jump
+var wall_jump_lock_anim = 0.0
+const WALL_JUMP_LOCK_ANIM_TIME = 0.2
 
 func _physics_process(delta: float) -> void:
-
+	# Get the input direction and handle the movement/deceleration
+	var direction = Input.get_axis("left_q", "right_d")
+	
+	# Flip the sprite
+	if direction > 0:
+		animated_sprite.flip_h = false
+	elif direction < 0:
+		animated_sprite.flip_h = true
+	
+	# Play animations
+	if is_on_floor():
+		if direction == 0:
+			animated_sprite.play("idle")
+		else:
+			if is_dashing:
+				animated_sprite.play("dash")
+			else:
+				animated_sprite.play("run")
+	elif is_on_wall():
+		animated_sprite.play("wall_slide")
+	elif wall_coyote > 0.0 or wall_jump_lock_anim > 0.0:
+		if Input.is_action_just_pressed("space_jump"):
+			if wall_coyote > 0.0:
+				wall_jump_lock_anim = WALL_JUMP_LOCK_ANIM_TIME
+		elif wall_jump_lock_anim > 0.0:
+			animated_sprite.play("wall_jump")
+		else:
+			animated_sprite.play("jump")
+		wall_jump_lock_anim -= delta
+	else:
+		if is_dashing:
+			if Vector2(Input.get_axis("left_q", "right_d"), Input.get_axis("up_z", "down_s")).normalized() == Vector2(0, -1):
+				animated_sprite.play("dash_vertical")
+			else:
+				animated_sprite.play("dash")
+		else:
+			animated_sprite.play("jump")
+	
 	# Add the gravity.
 	if !is_dashing:
 		if !is_on_floor() and velocity.y > 0 and is_on_wall():
@@ -72,9 +113,7 @@ func _physics_process(delta: float) -> void:
 		# Handle jump.
 		if Input.is_action_just_pressed("space_jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		var direction := Input.get_axis("left_q", "right_d")
+		
 		if wall_jump_lock <= 0:
 			if direction:
 				velocity.x = direction * SPEED
