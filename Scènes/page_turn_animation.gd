@@ -19,14 +19,9 @@ func _physics_process(_delta: float) -> void:
 			recto = true
 		show() # Fais apparaître l'anim
 		play("PageTurn")
-		if !recto:
-			$AnimationPlayer.play("move_anim_right")
-		else:
-			$AnimationPlayer.play("move_anim_left")
 
 func _on_animation_finished() -> void:
 	hide() # Recache quand l'anim est terminée
 	
 func _move_anim():
-	offset.x += 540
-	recto = true
+	offset.x += 1020
