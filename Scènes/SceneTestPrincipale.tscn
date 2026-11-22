@@ -497,4 +497,3 @@ shape = SubResource("RectangleShape2D_4newj")
 position = Vector2(162, 230)
 
 [connection signal="animation_finished" from="PageTurnAnim" to="PageTurnAnim" method="_on_animation_finished"]
-[connection signal="body_entered" from="NiveauTest/ToRight" to="NiveauTest/ToRight" method="_on_body_entered"]
