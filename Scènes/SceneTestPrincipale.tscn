@@ -110,6 +110,60 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="Animation" id="Animation_2ru4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1794, -3303.5)]
+}
+
+[sub_resource type="Animation" id="Animation_72ywm"]
+resource_name = "move_anim_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1410, -3303.5), Vector2(-1794, -3303.5)]
+}
+
+[sub_resource type="Animation" id="Animation_v45tl"]
+resource_name = "move_anim_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1794, -3303.5), Vector2(1410, -3303.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ru4x"]
+_data = {
+&"RESET": SubResource("Animation_2ru4x"),
+&"move_anim_left": SubResource("Animation_72ywm"),
+&"move_anim_right": SubResource("Animation_v45tl")
+}
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_epypp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ru4x"]
@@ -377,11 +431,16 @@ limit_bottom = -2442
 script = ExtResource("2_gux8m")
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="." unique_id=381243398]
-position = Vector2(678, 2.000001)
-scale = Vector2(1.2591465, 0.72619045)
+position = Vector2(-1794, -3303.5)
+scale = Vector2(7.906504, 3.2306552)
 sprite_frames = SubResource("SpriteFrames_d7522")
 animation = &"PageTurn"
+frame = 11
+frame_progress = 1.0
 script = ExtResource("3_2ru4x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PageTurnAnim" unique_id=297730431]
+libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="NiveauTest" parent="." unique_id=1747003562 instance=ExtResource("2_l22gy")]
 position = Vector2(690, -520)
