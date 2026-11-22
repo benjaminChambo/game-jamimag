@@ -663,7 +663,7 @@ position = Vector2(-1092, -1451)
 texture = ExtResource("2_1hgg1")
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
-position = Vector2(45074.98, -5365.1157)
+position = Vector2(38030, -4398)
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=980178254]
 position = Vector2(2647, -1600)
