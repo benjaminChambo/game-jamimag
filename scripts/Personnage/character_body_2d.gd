@@ -21,8 +21,8 @@ func _stop():
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const LIMITE_DASH = 12
-const LIMITE_WALL_JUMP = 8
+const LIMITE_DASH = 0
+const LIMITE_WALL_JUMP = 0
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -1000.0
