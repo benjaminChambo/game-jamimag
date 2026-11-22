@@ -1,22 +1,24 @@
 [gd_scene format=3 uid="uid://ds6v8eful05g0"]
 
 [ext_resource type="Script" uid="uid://52uqjeasuisi" path="res://scripts/Personnage/character_body_2d.gd" id="1_jtnla"]
-[ext_resource type="Texture2D" uid="uid://7lnj6vfcs818" path="res://design/theme_aquatique.jpg" id="2_ngrp0"]
+[ext_resource type="Texture2D" uid="uid://ddu8q38gfqg2e" path="res://frames_128x128/stickman_08_idle_repos1.png" id="2_ckidn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28sk"]
-height = 34.0
+radius = 13.0
+height = 116.0
 
 [node name="Joueur" type="CharacterBody2D" unique_id=1304069712 groups=["joueur"]]
 z_index = 5
+position = Vector2(3, -13)
 script = ExtResource("1_jtnla")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1429463401]
-position = Vector2(-8, 31)
+position = Vector2(31, -21)
 shape = SubResource("CapsuleShape2D_a28sk")
 debug_color = Color(0.2901961, 0.6392157, 0.3019608, 0.90588236)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=602518528]
-position = Vector2(-8.000002, 31.312506)
-scale = Vector2(0.011990409, 0.016052393)
-texture = ExtResource("2_ngrp0")
+position = Vector2(33, -25.999998)
+scale = Vector2(0.75, 1.09375)
+texture = ExtResource("2_ckidn")

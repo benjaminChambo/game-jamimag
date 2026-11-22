@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 400.0
-const JUMP_VELOCITY = -700.0
+const SPEED = 500.0
+const JUMP_VELOCITY = -1000.0
 
 # Gravity - you can get it from project settings or define it here
 var gravity = Vector2(0, 2000)
@@ -19,7 +19,7 @@ const COYOTE_TIME_THRESHOLD = 0.15 # 100 milliseconds of coyote time
 #const JUMP_BUFFER_TIME_THRESHOLD = 0.1 # 100 milliseconds for jump buffer
 
 # Constantes et variables pour le dash
-const DASH_AMT: float = 700.0
+const DASH_AMT: float = 1000.0
 const DASH_TIME:float = 0.20
 
 var can_dash: bool = true
@@ -29,8 +29,8 @@ var dash_timer: float = 0.0
 
 # Constantes et variables pour le wall jump
 const WALL_GRAVITY = 7000.0
-const WALL_JUMP_PUSH_FORCE = 450.0
-const WALL_JUMP_VELOCITY = -500.0
+const WALL_JUMP_PUSH_FORCE = 550.0
+const WALL_JUMP_VELOCITY = -700.0
 
 var wall_coyote = 0.0
 const WALL_COYOTE_TIME = 0.2
