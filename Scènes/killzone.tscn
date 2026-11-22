@@ -5,8 +5,4 @@
 [node name="Killzone" type="Area2D" unique_id=2082976846]
 script = ExtResource("1_3b5fx")
 
-[node name="Timer" type="Timer" parent="." unique_id=1821579262]
-wait_time = 0.06
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
