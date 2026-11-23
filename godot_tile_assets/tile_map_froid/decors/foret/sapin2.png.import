@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cabqxnfp2qme8"
-path="res://.godot/imported/sapin.png-1e59827638533bc9238d454476d44dc5.ctex"
+path="res://.godot/imported/sapin2.png-87d299dd2dd0dbb3ec12df5731d0b642.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://godot_tile_assets/tile_map_froid/decors/foret/sapin.png"
-dest_files=["res://.godot/imported/sapin.png-1e59827638533bc9238d454476d44dc5.ctex"]
+source_file="res://godot_tile_assets/tile_map_froid/decors/foret/sapin2.png"
+dest_files=["res://.godot/imported/sapin2.png-87d299dd2dd0dbb3ec12df5731d0b642.ctex"]
 
 [params]
 

@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://darwq6xnafart" path="res://art/Fond/fond_noir.png" id="3_poxic"]
 [ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
+[ext_resource type="Texture2D" uid="uid://b20o00x2oee80" path="res://art/ouverture_book_full.png" id="4_ha7xk"]
+[ext_resource type="Script" uid="uid://t4belvstblvg" path="res://scripts/objets/book_opening.gd" id="5_4rham"]
 [ext_resource type="Script" uid="uid://dycyotsae80fb" path="res://scripts/Personnage/control_touches.gd" id="5_iqs1s"]
 [ext_resource type="Script" uid="uid://hof3vxth75tb" path="res://scripts/Personnage/touches_wall_jump.gd" id="6_eeysh"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
@@ -71,6 +73,98 @@ tags = {
 "encodedby": "HappyScribe",
 "encoder": "Lavf62.12.100"
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rham"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(0, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3gjf"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(984, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08h7o"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(1968, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lifao"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(2952, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtwj4"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(3936, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpiv8"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(4920, 0, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbyr3"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(0, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sa01"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(984, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg0bd"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(1968, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0unok"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(2952, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vik1"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(3936, 672, 984, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrrjp"]
+atlas = ExtResource("4_ha7xk")
+region = Rect2(4920, 672, 984, 672)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4jyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rham")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3gjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08h7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lifao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtwj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpiv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbyr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sa01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg0bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0unok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vik1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrrjp")
+}],
+"loop": 0,
+"name": &"anim_book",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72ywm"]
 atlas = ExtResource("2_v45tl")
@@ -727,6 +821,16 @@ z_index = -10
 position = Vector2(27137, -4941)
 scale = Vector2(67.29032, 6.7215056)
 texture = ExtResource("3_poxic")
+
+[node name="OuvertureBook" type="AnimatedSprite2D" parent="." unique_id=1745255013]
+z_index = 10
+position = Vector2(-532.00006, -4922)
+scale = Vector2(8.714066, 3.7170262)
+sprite_frames = SubResource("SpriteFrames_k4jyb")
+animation = &"anim_book"
+frame = 11
+frame_progress = 1.0
+script = ExtResource("5_4rham")
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
 position = Vector2(-177, -4301)
@@ -1959,4 +2063,5 @@ position = Vector2(19905, -5066)
 position = Vector2(23510, -5892)
 shape = SubResource("RectangleShape2D_hsufn")
 
+[connection signal="animation_finished" from="OuvertureBook" to="OuvertureBook" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Page1/PageTurnAnim" to="Page1/PageTurnAnim" method="_on_animation_finished"]
