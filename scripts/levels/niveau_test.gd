@@ -2,8 +2,12 @@ extends Node2D
 
 var stop = false
 var page = 1
+
+var fond_prem = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hide_all()
 	map_2.set_enabled(false)
 	get_node("../Page1/ToRight").corps_detecte.connect(_stop)
 	get_node("../Page1/ToRight2").corps_detecte.connect(_stop)
@@ -156,3 +160,9 @@ func hide_all():
 	get_node("../Page7/TML_froid/FondFroid7").hide()
 	get_node("../Page8/TML_chaud/FondChaud8").hide()
 	get_node("../Page8/TML_froid/FondFroid8").hide()
+
+
+func _on_ouverture_book_animation_finished() -> void:
+	if fond_prem == 0:
+		get_node("../Page1/TML_froid/FondFroid1").show()
+		fond_prem += 1

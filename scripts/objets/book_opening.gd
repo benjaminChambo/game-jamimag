@@ -1,9 +1,9 @@
 extends AnimatedSprite2D
 
-var timer = 0.2
+var timer = 1
 
 func _ready() -> void:
-	pass # Replace with function body.
+	play("book_closed")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cabqxnfp2qme8"
-path="res://.godot/imported/sapin2.png-87d299dd2dd0dbb3ec12df5731d0b642.ctex"
+uid="uid://s4ih5oc6sk30"
+path="res://.godot/imported/closed_book.png-9df359629fdafa129c0f6016957a9b33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://godot_tile_assets/tile_map_froid/decors/foret/sapin2.png"
-dest_files=["res://.godot/imported/sapin2.png-87d299dd2dd0dbb3ec12df5731d0b642.ctex"]
+source_file="res://art/closed_book.png"
+dest_files=["res://.godot/imported/closed_book.png-9df359629fdafa129c0f6016957a9b33.ctex"]
 
 [params]
 
