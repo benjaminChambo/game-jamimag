@@ -1,6 +1,6 @@
 extends Node2D
 
-var show = false
+var show2 = false
 
 var tige_faite = false
 var petales_faits = false
@@ -16,11 +16,11 @@ var rouges_terminees = 0
 
 func _ready():
 	scale = Vector2(4,4)
-	get_node("../ZoneFin").corps_detecte.connect(_show)
+	get_node("../ZoneFin").corps_detecte.connect(_show2)
 	creer_tracés()
 
-func _show():
-	show = true
+func _show2():
+	show2 = true
 
 func creer_tracés():
 
@@ -149,7 +149,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("left_q") and not animation_en_cours and not tige_faite:
 		dessiner_bleu()
 
-	if Input.is_key_pressed(KEY_Y) and tige_faite and not animation_en_cours and not petales_faits and show:
+	if Input.is_key_pressed(KEY_Y) and tige_faite and not animation_en_cours and not petales_faits and show2:
 		dessiner_rouge()
 
 	queue_redraw()
