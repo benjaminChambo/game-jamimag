@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b0kchfk28uar0" path="res://scripts/levels/intro.gd" id="1_2ru4x"]
 [ext_resource type="PackedScene" uid="uid://ds6v8eful05g0" path="res://Scènes/ScenePersonnage.tscn" id="1_34ld8"]
+[ext_resource type="Script" uid="uid://dav2eo4co8qwj" path="res://scripts/levels/musique.gd" id="1_q5epn"]
 [ext_resource type="Script" uid="uid://dgm73bueb71fm" path="res://scripts/Personnage/camera_moove.gd" id="2_gux8m"]
 [ext_resource type="PackedScene" uid="uid://b8wslvwx2ey08" path="res://Scènes/SceneNiveauTest.tscn" id="2_l22gy"]
 [ext_resource type="Texture2D" uid="uid://ddsoq74yivvji" path="res://art/page_turn_full.png" id="2_v45tl"]
 [ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
 [ext_resource type="Script" uid="uid://cotm54tp1x4oi" path="res://scripts/objets/page_turn_animation.gd" id="3_2ru4x"]
 [ext_resource type="Texture2D" uid="uid://bowmxpddf13wr" path="res://art/Fond/fond_froid.png" id="3_i0y3o"]
+[ext_resource type="AudioStream" uid="uid://d35cuf3a61xeo" path="res://design/SadSong.wav" id="3_poxic"]
 [ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="PackedScene" uid="uid://dq2l0otst4184" path="res://Scènes/ouverture_book.tscn" id="5_0c7d2"]
@@ -646,6 +648,15 @@ size = Vector2(68, 2066.9998)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d7522"]
 
 [node name="Démo" type="Node2D" unique_id=386771801]
+script = ExtResource("1_q5epn")
+musique_1 = ExtResource("28_2u3xq")
+musique_2 = ExtResource("3_poxic")
+niveau_changement_musique = 2
+niveau_arret_musique = 3
+
+[node name="Musique1" type="AudioStreamPlayer2D" parent="." unique_id=618817676]
+
+[node name="Musique2" type="AudioStreamPlayer2D" parent="." unique_id=137346637]
 
 [node name="Intro" type="CanvasLayer" parent="." unique_id=581205386]
 script = ExtResource("1_2ru4x")
@@ -671,14 +682,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
-position = Vector2(50613.6, -4797.1904)
+position = Vector2(918.16504, -4656.7344)
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=980178254]
 position = Vector2(2647, -1600)
 zoom = Vector2(0.3, 0.3)
-limit_left = 48366
+limit_left = -392
 limit_top = -5839
-limit_right = 51785
+limit_right = 3027
 limit_bottom = -4015
 script = ExtResource("2_gux8m")
 
