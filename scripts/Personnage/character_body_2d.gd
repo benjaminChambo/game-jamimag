@@ -84,8 +84,24 @@ func respawn():
 		self.global_position = Vector2(17128.0, -4270.0)
 	elif page == 7:
 		self.global_position = Vector2(20584.0, -5366.0)
+	elif page == 8:
+		self.global_position = Vector2(24090.0, -4275.0)
+	elif page == 9:
+		self.global_position = Vector2(27564.0, -5645.0)
+	elif page == 10:
+		self.global_position = Vector2(31168.0, -5678.0)
+	elif page == 11:
+		self.global_position = Vector2(34556.0, -4406.0)
+	elif page == 12:
+		self.global_position = Vector2(37993.0, -4399.0)
+	elif page == 13:
+		self.global_position = Vector2(41456.0, -4345.0)
+	elif page == 14:
+		self.global_position = Vector2(44988.0, -5294.0)
+	elif page == 15:
+		self.global_position = Vector2(48487.0, -5520.0)
 	else:
-		self.global_position = Vector2(48482.0, -5580.0)
+		self.global_position = Vector2(52145.0, -4316.0)
 
 func _physics_process(delta: float) -> void:
 	if stop :
