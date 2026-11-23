@@ -30,16 +30,16 @@ func _go_right():
 	suivre_joueur = false
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(self, "zoom", Vector2(0.2, 0.2), 2.0)
-	tween.tween_property(self, "limit_right", limit_right+taille_niveau+64, 2.0)
+	tween.tween_property(self, "zoom", Vector2(0.2, 0.2), 1.5)
+	tween.tween_property(self, "limit_right", limit_right+taille_niveau+95, 1.5)
 	tween.finished.connect(_deuxieme_tween)
 
 func _deuxieme_tween():
 	await get_tree().create_timer(0.5).timeout
 	var tween2 = create_tween()
 	tween2.set_parallel(true)
-	tween2.tween_property(self, "zoom", Vector2(0.3, 0.3), 2.0)
-	tween2.tween_property(self, "limit_left", limit_left+taille_niveau+64, 2.0)
+	tween2.tween_property(self, "zoom", Vector2(0.3, 0.3), 1.5)
+	tween2.tween_property(self, "limit_left", limit_left+taille_niveau+95, 1.5)
 	await tween2.finished
 	suivre_joueur = true
 	

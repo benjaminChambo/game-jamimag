@@ -28,7 +28,7 @@ func _show():
 func _stop():
 	stop = true
 	page += 1
-	await get_tree().create_timer(4.5).timeout
+	await get_tree().create_timer(3.5).timeout
 	stop = false
 
 @onready

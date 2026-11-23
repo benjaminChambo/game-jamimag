@@ -23,7 +23,7 @@ func afficher_tuto():
 	await apparition.finished
 
 	var clignotement = create_tween()
-	clignotement.set_loops(4)
+	clignotement.set_loops(6)
 
 	clignotement.tween_property(self, "modulate:a", 0.4, 0.5)
 	clignotement.tween_property(self, "modulate:a", 0.8, 0.5)

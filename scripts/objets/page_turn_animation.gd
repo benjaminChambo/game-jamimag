@@ -47,123 +47,123 @@ func _physics_process(_delta: float) -> void:
 				get_node("../../Page2/PageTurnAnim2").show()
 				get_node("../../Page2/PageTurnAnim2").play("PageTurn")
 				get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 3:
-			if !recto:
-				get_node("../../Page2/PageTurnAnim").show()
-				get_node("../../Page2/PageTurnAnim").play("PageTurn")
-				get_node("../../Page2/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page2/PageTurnAnim").show()
-				get_node("../../Page2/PageTurnAnim").play("PageTurn")
-				get_node("../../Page2/PageTurnAnim/AnimationPlayer").play("move_anim_left")
-		elif page == 4:
-			if !recto:
-				get_node("../../Page3/PageTurnAnim2").show()
-				get_node("../../Page3/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page3/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page3/PageTurnAnim2").show()
-				get_node("../../Page3/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page3/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 5:
-			if !recto:
-				get_node("../../Page3/PageTurnAnim").show()
-				get_node("../../Page3/PageTurnAnim").play("PageTurn")
-				get_node("../../Page3/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page3/PageTurnAnim").show()
-				get_node("../../Page3/PageTurnAnim").play("PageTurn")
-				get_node("../../Page3/PageTurnAnim/AnimationPlayer").play("move_anim_left")
-		elif page == 6:
-			if !recto:
-				get_node("../../Page4/PageTurnAnim2").show()
-				get_node("../../Page4/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page4/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page4/PageTurnAnim2").show()
-				get_node("../../Page4/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page4/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 7:
-			if !recto:
-				get_node("../../Page4/PageTurnAnim").show()
-				get_node("../../Page4/PageTurnAnim").play("PageTurn")
-				get_node("../../Page4/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page4/PageTurnAnim").show()
-				get_node("../../Page4/PageTurnAnim").play("PageTurn")
-				get_node("../../Page4/PageTurnAnim/AnimationPlayer").play("move_anim_left")
-		elif page == 8:
-			if !recto:
-				get_node("../../Page5/PageTurnAnim2").show()
-				get_node("../../Page5/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page5/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page5/PageTurnAnim2").show()
-				get_node("../../Page5/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page5/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 9:
-			if !recto:
-				get_node("../../Page5/PageTurnAnim").show()
-				get_node("../../Page5/PageTurnAnim").play("PageTurn")
-				get_node("../../Page5/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page5/PageTurnAnim").show()
-				get_node("../../Page5/PageTurnAnim").play("PageTurn")
-				get_node("../../Page5/PageTurnAnim/AnimationPlayer").play("move_anim_left")
-		elif page == 10:
-			if !recto:
-				get_node("../../Page6/PageTurnAnim2").show()
-				get_node("../../Page6/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page6/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page6/PageTurnAnim2").show()
-				get_node("../../Page6/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page6/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 11:
-			if !recto:
-				get_node("../../Page6/PageTurnAnim").show()
-				get_node("../../Page6/PageTurnAnim").play("PageTurn")
-				get_node("../../Page6/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page6/PageTurnAnim").show()
-				get_node("../../Page6/PageTurnAnim").play("PageTurn")
-				get_node("../../Page6/PageTurnAnim/AnimationPlayer").play("move_anim_left")
-		elif page == 12:
-			if !recto:
-				get_node("../../Page7/PageTurnAnim2").show()
-				get_node("../../Page7/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page7/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page7/PageTurnAnim2").show()
-				get_node("../../Page7/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page7/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 13:
-			if !recto:
-				get_node("../../Page7/PageTurnAnim").show()
-				get_node("../../Page7/PageTurnAnim").play("PageTurn")
-				get_node("../../Page7/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page7/PageTurnAnim").show()
-				get_node("../../Page7/PageTurnAnim").play("PageTurn")
-				get_node("../../Page7/PageTurnAnim/AnimationPlayer").play("move_anim_left")
-		elif page == 14:
-			if !recto:
-				get_node("../../Page8/PageTurnAnim2").show()
-				get_node("../../Page8/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page8/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page8/PageTurnAnim2").show()
-				get_node("../../Page8/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page8/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
-		elif page == 15:
-			if !recto:
-				get_node("../../Page8/PageTurnAnim").show()
-				get_node("../../Page8/PageTurnAnim").play("PageTurn")
-				get_node("../../Page8/PageTurnAnim/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page8/PageTurnAnim").show()
-				get_node("../../Page8/PageTurnAnim").play("PageTurn")
-				get_node("../../Page8/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 3:
+			#if !recto:
+				#get_node("../../Page2/PageTurnAnim").show()
+				#get_node("../../Page2/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page2/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page2/PageTurnAnim").show()
+				#get_node("../../Page2/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page2/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 4:
+			#if !recto:
+				#get_node("../../Page3/PageTurnAnim2").show()
+				#get_node("../../Page3/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page3/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page3/PageTurnAnim2").show()
+				#get_node("../../Page3/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page3/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		#elif page == 5:
+			#if !recto:
+				#get_node("../../Page3/PageTurnAnim").show()
+				#get_node("../../Page3/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page3/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page3/PageTurnAnim").show()
+				#get_node("../../Page3/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page3/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 6:
+			#if !recto:
+				#get_node("../../Page4/PageTurnAnim2").show()
+				#get_node("../../Page4/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page4/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page4/PageTurnAnim2").show()
+				#get_node("../../Page4/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page4/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		#elif page == 7:
+			#if !recto:
+				#get_node("../../Page4/PageTurnAnim").show()
+				#get_node("../../Page4/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page4/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page4/PageTurnAnim").show()
+				#get_node("../../Page4/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page4/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 8:
+			#if !recto:
+				#get_node("../../Page5/PageTurnAnim2").show()
+				#get_node("../../Page5/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page5/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page5/PageTurnAnim2").show()
+				#get_node("../../Page5/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page5/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		#elif page == 9:
+			#if !recto:
+				#get_node("../../Page5/PageTurnAnim").show()
+				#get_node("../../Page5/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page5/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page5/PageTurnAnim").show()
+				#get_node("../../Page5/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page5/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 10:
+			#if !recto:
+				#get_node("../../Page6/PageTurnAnim2").show()
+				#get_node("../../Page6/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page6/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page6/PageTurnAnim2").show()
+				#get_node("../../Page6/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page6/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		#elif page == 11:
+			#if !recto:
+				#get_node("../../Page6/PageTurnAnim").show()
+				#get_node("../../Page6/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page6/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page6/PageTurnAnim").show()
+				#get_node("../../Page6/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page6/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 12:
+			#if !recto:
+				#get_node("../../Page7/PageTurnAnim2").show()
+				#get_node("../../Page7/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page7/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page7/PageTurnAnim2").show()
+				#get_node("../../Page7/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page7/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		#elif page == 13:
+			#if !recto:
+				#get_node("../../Page7/PageTurnAnim").show()
+				#get_node("../../Page7/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page7/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page7/PageTurnAnim").show()
+				#get_node("../../Page7/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page7/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 14:
+			#if !recto:
+				#get_node("../../Page8/PageTurnAnim2").show()
+				#get_node("../../Page8/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page8/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page8/PageTurnAnim2").show()
+				#get_node("../../Page8/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page8/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		#elif page == 15:
+			#if !recto:
+				#get_node("../../Page8/PageTurnAnim").show()
+				#get_node("../../Page8/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page8/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page8/PageTurnAnim").show()
+				#get_node("../../Page8/PageTurnAnim").play("PageTurn")
+				#get_node("../../Page8/PageTurnAnim/AnimationPlayer").play("move_anim_left")
 
 func _on_animation_finished() -> void:
 	hide() # Recache quand l'anim est terminée

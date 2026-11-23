@@ -18,12 +18,13 @@ func _process(_delta):
 		afficher_tuto()
 
 func afficher_tuto():
+	await get_tree().create_timer(5).timeout
 	var apparition = create_tween()
 	apparition.tween_property(self, "modulate:a", 0.8, 1.0)
 	await apparition.finished
 
 	var clignotement = create_tween()
-	clignotement.set_loops(4)
+	clignotement.set_loops(6)
 
 	clignotement.tween_property(self, "modulate:a", 0.4, 0.5)
 	clignotement.tween_property(self, "modulate:a", 0.8, 0.5)

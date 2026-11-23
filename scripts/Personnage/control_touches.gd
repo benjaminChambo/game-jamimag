@@ -11,7 +11,7 @@ func _ready():
 
 	# Clignotement doux
 	var clignotement = create_tween()
-	clignotement.set_loops(4)
+	clignotement.set_loops(6)
 
 	clignotement.tween_property(self, "modulate:a", 0.2, 1)
 	clignotement.tween_property(self, "modulate:a", 0.9, 1)
