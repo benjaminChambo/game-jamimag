@@ -14,14 +14,17 @@
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="PackedScene" uid="uid://dq2l0otst4184" path="res://Scènes/ouverture_book.tscn" id="5_0c7d2"]
 [ext_resource type="Script" uid="uid://dycyotsae80fb" path="res://scripts/Personnage/control_touches.gd" id="5_iqs1s"]
+[ext_resource type="Script" uid="uid://hof3vxth75tb" path="res://scripts/Personnage/touches_wall_jump.gd" id="6_eeysh"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
 [ext_resource type="Texture2D" uid="uid://b56th37hu8bv" path="res://godot_tile_assets/tile_map_froid/TILEMAPFROID.png" id="6_v45tl"]
 [ext_resource type="AudioStream" uid="uid://0vvhhpum844s" path="res://SFX/Page_4.wav" id="7_3lyba"]
 [ext_resource type="Texture2D" uid="uid://bdrsl4flh8jsc" path="res://godot_tile_assets/Atlas Chaud/tilesets_atlas/atlas fruit.png" id="7_6amv8"]
 [ext_resource type="Script" uid="uid://cf3q4sisaudaq" path="res://scripts/Personnage/area_to_right.gd" id="7_ih0dn"]
+[ext_resource type="Script" uid="uid://e76co8a3y8hn" path="res://scripts/Personnage/touches_dash.gd" id="7_j6lkk"]
 [ext_resource type="Texture2D" uid="uid://d11h446sdkjtm" path="res://godot_tile_assets/Atlas Chaud/tilesets_atlas/atlas space.png" id="8_72ywm"]
 [ext_resource type="AudioStream" uid="uid://ci8jo806vaaie" path="res://SFX/Page_5.wav" id="8_bd8q8"]
 [ext_resource type="Script" uid="uid://dwwa5rh2r5rpf" path="res://scripts/levels/area_change_cam.gd" id="8_i6fb1"]
+[ext_resource type="Script" uid="uid://c75rcah18h76w" path="res://scripts/levels/touches_dessiner.gd" id="8_j6lkk"]
 [ext_resource type="AudioStream" uid="uid://bo78rs48neber" path="res://SFX/Page_6.wav" id="9_jryrq"]
 [ext_resource type="Script" uid="uid://dul7ycfmos4pw" path="res://scripts/levels/barrier.gd" id="9_nwg7s"]
 [ext_resource type="Texture2D" uid="uid://b2t6jyex5pue1" path="res://godot_tile_assets/Atlas Chaud/tilesets_atlas/atlas chambre .png" id="10_g7qvq"]
@@ -768,6 +771,50 @@ theme_override_font_sizes/font_size = 40
 text = "ZQSD : Bouger"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TouchesWallJump" type="Node2D" parent="CharacterBody2D" unique_id=537187215]
+script = ExtResource("6_eeysh")
+
+[node name="Label" type="Label" parent="CharacterBody2D/TouchesWallJump" unique_id=1547020775]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -204.16504
+offset_top = -260.26563
+offset_right = 285.83496
+offset_bottom = -79.265625
+theme_override_font_sizes/font_size = 40
+text = "Vous pouvez maintenant 
+wall jump !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchesDash" type="Node2D" parent="CharacterBody2D" unique_id=751606671]
+script = ExtResource("7_j6lkk")
+
+[node name="Label" type="Label" parent="CharacterBody2D/TouchesDash" unique_id=1977905848]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -66.16504
+offset_top = -169.26563
+offset_right = 93.83496
+offset_bottom = -114.265625
+theme_override_font_sizes/font_size = 40
+text = "O : Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchesDessiner" type="Node2D" parent="CharacterBody2D" unique_id=1540784305]
+script = ExtResource("8_j6lkk")
+
+[node name="Label" type="Label" parent="CharacterBody2D/TouchesDessiner" unique_id=1213888353]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -114.16504
+offset_top = -133.26563
+offset_right = 109.83496
+offset_bottom = -78.265625
+theme_override_font_sizes/font_size = 40
+text = "Y : Dessiner"
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=980178254]
 position = Vector2(2647, -1600)
