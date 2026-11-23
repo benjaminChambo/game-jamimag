@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dg6s7g6p6yu4x" path="res://SFX/Page_1.wav" id="3_1gikw"]
 [ext_resource type="Script" uid="uid://cotm54tp1x4oi" path="res://scripts/objets/page_turn_animation.gd" id="3_2ru4x"]
 [ext_resource type="Texture2D" uid="uid://bowmxpddf13wr" path="res://art/Fond/fond_froid.png" id="3_i0y3o"]
+[ext_resource type="Texture2D" uid="uid://darwq6xnafart" path="res://art/Fond/fond_noir.png" id="3_poxic"]
 [ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="PackedScene" uid="uid://dq2l0otst4184" path="res://Scènes/ouverture_book.tscn" id="5_0c7d2"]
@@ -707,6 +708,12 @@ text = "test
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FondNoir" type="Sprite2D" parent="." unique_id=732558304]
+z_index = -10
+position = Vector2(27137, -4941)
+scale = Vector2(67.29032, 6.7215056)
+texture = ExtResource("3_poxic")
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
 position = Vector2(918.16504, -4656.7344)
