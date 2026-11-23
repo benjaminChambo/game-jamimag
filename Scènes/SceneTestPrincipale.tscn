@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
 [ext_resource type="PackedScene" uid="uid://dq2l0otst4184" path="res://Scènes/ouverture_book.tscn" id="5_0c7d2"]
+[ext_resource type="Script" uid="uid://dycyotsae80fb" path="res://scripts/Personnage/control_touches.gd" id="5_iqs1s"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
 [ext_resource type="Texture2D" uid="uid://b56th37hu8bv" path="res://godot_tile_assets/tile_map_froid/TILEMAPFROID.png" id="6_v45tl"]
 [ext_resource type="AudioStream" uid="uid://0vvhhpum844s" path="res://SFX/Page_4.wav" id="7_3lyba"]
@@ -717,6 +718,56 @@ texture = ExtResource("3_poxic")
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
 position = Vector2(918.16504, -4656.7344)
+
+[node name="ControlTouches" type="Node2D" parent="CharacterBody2D" unique_id=679191426]
+script = ExtResource("5_iqs1s")
+
+[node name="Saut" type="Label" parent="CharacterBody2D/ControlTouches" unique_id=797635513]
+modulate = Color(0.24313726, 0.24313726, 0.24313726, 1)
+self_modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+offset_left = -260.16504
+offset_top = -6.265625
+offset_right = -80.16504
+offset_bottom = 48.734375
+theme_override_colors/font_outline_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+theme_override_font_sizes/font_size = 40
+text = "S : Sauter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TournerPage" type="Label" parent="CharacterBody2D/ControlTouches" unique_id=78617116]
+modulate = Color(0.24313726, 0.24313726, 0.24313726, 1)
+self_modulate = Color(0.24313726, 0.24313726, 0.24313726, 1)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 97.83496
+offset_top = -16.265625
+offset_right = 548.83496
+offset_bottom = 52.734375
+grow_horizontal = 0
+theme_override_colors/font_outline_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+theme_override_font_sizes/font_size = 40
+text = "P : Tourner la page"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bouger" type="Label" parent="CharacterBody2D/ControlTouches" unique_id=2145233332]
+modulate = Color(0.24313726, 0.24313726, 0.24313726, 1)
+self_modulate = Color(0.24313726, 0.24313726, 0.24313726, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -151.16504
+offset_top = -201.26563
+offset_right = 193.83496
+offset_bottom = -132.26563
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+theme_override_font_sizes/font_size = 40
+text = "ZQSD : Bouger"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=980178254]
 position = Vector2(2647, -1600)
