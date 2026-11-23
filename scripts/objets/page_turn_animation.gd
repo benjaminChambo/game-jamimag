@@ -35,18 +35,18 @@ func _physics_process(_delta: float) -> void:
 			get_node("../../Page1/PageTurnAnim").show()
 			get_node("../../Page1/PageTurnAnim").play("PageTurn")
 			if !recto:
-				get_node("../../Page1/PageTurnAnim/AnimationPlayer1").play("move_anim_right")
+				get_node("../../Page1/PageTurnAnim/AnimationPlayer").play("move_anim_right")
 			else:
-				get_node("../../Page1/PageTurnAnim/AnimationPlayer1").play("move_anim_left")
-		elif page == 2:
-			if !recto:
-				get_node("../../Page2/PageTurnAnim2").show()
-				get_node("../../Page2/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
-			else:
-				get_node("../../Page2/PageTurnAnim2").show()
-				get_node("../../Page2/PageTurnAnim2").play("PageTurn")
-				get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+				get_node("../../Page1/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		#elif page == 2:
+			#if !recto:
+				#get_node("../../Page2/PageTurnAnim2").show()
+				#get_node("../../Page2/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			#else:
+				#get_node("../../Page2/PageTurnAnim2").show()
+				#get_node("../../Page2/PageTurnAnim2").play("PageTurn")
+				#get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
 		#elif page == 3:
 			#if !recto:
 				#get_node("../../Page2/PageTurnAnim").show()
