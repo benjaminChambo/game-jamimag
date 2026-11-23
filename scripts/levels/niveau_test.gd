@@ -67,19 +67,37 @@ func _physics_process(_delta: float) -> void:
 			if page == 1:
 				get_node("../Page1/TML_chaud/FondChaud1").show()
 			elif page == 2:
-				get_node("../Page2/TML_chaud/FondChaud2").show()
+				get_node("../Page1/TML_chaud/FondChaud1").show()
 			elif page == 3:
-				get_node("../Page3/TML_chaud/FondChaud3").show()
+				get_node("../Page2/TML_chaud/FondChaud2").show()
 			elif page == 4:
-				get_node("../Page4/TML_chaud/FondChaud4").show()
+				get_node("../Page2/TML_chaud/FondChaud2").show()
 			elif page == 5:
-				get_node("../Page5/TML_chaud/FondChaud5").show()
+				get_node("../Page3/TML_chaud/FondChaud3").show()
 			elif page == 6:
-				get_node("../Page6/TML_chaud/FondChaud6").show()
+				get_node("../Page3/TML_chaud/FondChaud3").show()
 			elif page == 7:
+				get_node("../Page4/TML_chaud/FondChaud4").show()
+			elif page == 8:
+				get_node("../Page4/TML_chaud/FondChaud4").show()
+			elif page == 9:
+				get_node("../Page5/TML_chaud/FondChaud5").show()
+			elif page == 10:
+				get_node("../Page5/TML_chaud/FondChaud5").show()
+			elif page == 11:
+				get_node("../Page6/TML_chaud/FondChaud6").show()
+			elif page == 12:
+				get_node("../Page6/TML_chaud/FondChaud6").show()
+			elif page == 13:
 				get_node("../Page7/TML_chaud/FondChaud7").show()
-			else:
+			elif page == 14:
+				get_node("../Page7/TML_chaud/FondChaud7").show()
+			elif page == 15:
 				get_node("../Page8/TML_chaud/FondChaud8").show()
+			elif page == 16:
+				get_node("../Page8/TML_chaud/FondChaud8").show()
+			else:
+				get_node("../Page9/TML_chaud/FondChaud9").show()
 		elif currentTile == 2:
 			currentTile = 1
 			map_2.set_enabled(false)
@@ -89,17 +107,33 @@ func _physics_process(_delta: float) -> void:
 			elif page == 2:
 				get_node("../Page2/TML_froid/FondFroid2").show()
 			elif page == 3:
-				get_node("../Page3/TML_froid/FondFroid3").show()
+				get_node("../Page2/TML_froid/FondFroid2").show()
 			elif page == 4:
-				get_node("../Page4/TML_froid/FondFroid4").show()
+				get_node("../Page3/TML_froid/FondFroid3").show()
 			elif page == 5:
-				get_node("../Page5/TML_froid/FondFroid5").show()
+				get_node("../Page3/TML_froid/FondFroid3").show()
 			elif page == 6:
-				get_node("../Page6/TML_froid/FondFroid6").show()
+				get_node("../Page4/TML_froid/FondFroid4").show()
 			elif page == 7:
+				get_node("../Page4/TML_froid/FondFroid4").show()
+			elif page == 8:
+				get_node("../Page5/TML_froid/FondFroid5").show()
+			elif page == 9:
+				get_node("../Page5/TML_froid/FondFroid5").show()
+			elif page == 10:
+				get_node("../Page6/TML_froid/FondFroid6").show()
+			elif page == 11:
+				get_node("../Page6/TML_froid/FondFroid6").show()
+			elif page == 12:
 				get_node("../Page7/TML_froid/FondFroid7").show()
-			else:
+			elif page == 13:
+				get_node("../Page7/TML_froid/FondFroid7").show()
+			elif page == 14:
 				get_node("../Page8/TML_froid/FondFroid8").show()
+			elif page == 15:
+				get_node("../Page8/TML_froid/FondFroid8").show()
+			else:
+				get_node("../Page9/TML_froid/FondFroid9").show()
 
 
 func hide_all():

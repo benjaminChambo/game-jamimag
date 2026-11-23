@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-var timer = 10.0
+var timer = 0.2
 
 func _ready() -> void:
 	pass # Replace with function body.

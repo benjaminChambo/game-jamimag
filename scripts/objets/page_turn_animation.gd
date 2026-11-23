@@ -1,25 +1,26 @@
 extends AnimatedSprite2D
 
+var page = 1
 var recto = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()  # Cache l'anim au début
-	get_node("../Page1/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page1/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page2/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page2/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page3/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page3/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page4/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page4/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page5/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page5/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page6/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page6/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page7/ToRight").corps_detecte.connect(_move_anim)
-	get_node("../Page7/ToRight2").corps_detecte.connect(_move_anim)
-	get_node("../Page8/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page1/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page1/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page2/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page2/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page3/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page3/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page4/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page4/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page5/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page5/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page6/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page6/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page7/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../../Page7/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../../Page8/ToRight").corps_detecte.connect(_move_anim)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
@@ -30,16 +31,143 @@ func _physics_process(_delta: float) -> void:
 		else:
 			flip_h = true
 			recto = true
-		show() # Fais apparaître l'anim
-		play("PageTurn")
-		if !recto:
-			$AnimationPlayer.play("move_anim_right")
-		else:
-			$AnimationPlayer.play("move_anim_left")
+		if page == 1:
+			get_node("../../Page1/PageTurnAnim").show()
+			get_node("../../Page1/PageTurnAnim").play("PageTurn")
+			if !recto:
+				get_node("../../Page1/PageTurnAnim/AnimationPlayer1").play("move_anim_right")
+			else:
+				get_node("../../Page1/PageTurnAnim/AnimationPlayer1").play("move_anim_left")
+		elif page == 2:
+			if !recto:
+				get_node("../../Page2/PageTurnAnim2").show()
+				get_node("../../Page2/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page2/PageTurnAnim2").show()
+				get_node("../../Page2/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page2/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 3:
+			if !recto:
+				get_node("../../Page2/PageTurnAnim").show()
+				get_node("../../Page2/PageTurnAnim").play("PageTurn")
+				get_node("../../Page2/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page2/PageTurnAnim").show()
+				get_node("../../Page2/PageTurnAnim").play("PageTurn")
+				get_node("../../Page2/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		elif page == 4:
+			if !recto:
+				get_node("../../Page3/PageTurnAnim2").show()
+				get_node("../../Page3/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page3/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page3/PageTurnAnim2").show()
+				get_node("../../Page3/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page3/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 5:
+			if !recto:
+				get_node("../../Page3/PageTurnAnim").show()
+				get_node("../../Page3/PageTurnAnim").play("PageTurn")
+				get_node("../../Page3/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page3/PageTurnAnim").show()
+				get_node("../../Page3/PageTurnAnim").play("PageTurn")
+				get_node("../../Page3/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		elif page == 6:
+			if !recto:
+				get_node("../../Page4/PageTurnAnim2").show()
+				get_node("../../Page4/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page4/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page4/PageTurnAnim2").show()
+				get_node("../../Page4/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page4/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 7:
+			if !recto:
+				get_node("../../Page4/PageTurnAnim").show()
+				get_node("../../Page4/PageTurnAnim").play("PageTurn")
+				get_node("../../Page4/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page4/PageTurnAnim").show()
+				get_node("../../Page4/PageTurnAnim").play("PageTurn")
+				get_node("../../Page4/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		elif page == 8:
+			if !recto:
+				get_node("../../Page5/PageTurnAnim2").show()
+				get_node("../../Page5/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page5/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page5/PageTurnAnim2").show()
+				get_node("../../Page5/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page5/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 9:
+			if !recto:
+				get_node("../../Page5/PageTurnAnim").show()
+				get_node("../../Page5/PageTurnAnim").play("PageTurn")
+				get_node("../../Page5/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page5/PageTurnAnim").show()
+				get_node("../../Page5/PageTurnAnim").play("PageTurn")
+				get_node("../../Page5/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		elif page == 10:
+			if !recto:
+				get_node("../../Page6/PageTurnAnim2").show()
+				get_node("../../Page6/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page6/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page6/PageTurnAnim2").show()
+				get_node("../../Page6/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page6/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 11:
+			if !recto:
+				get_node("../../Page6/PageTurnAnim").show()
+				get_node("../../Page6/PageTurnAnim").play("PageTurn")
+				get_node("../../Page6/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page6/PageTurnAnim").show()
+				get_node("../../Page6/PageTurnAnim").play("PageTurn")
+				get_node("../../Page6/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		elif page == 12:
+			if !recto:
+				get_node("../../Page7/PageTurnAnim2").show()
+				get_node("../../Page7/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page7/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page7/PageTurnAnim2").show()
+				get_node("../../Page7/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page7/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 13:
+			if !recto:
+				get_node("../../Page7/PageTurnAnim").show()
+				get_node("../../Page7/PageTurnAnim").play("PageTurn")
+				get_node("../../Page7/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page7/PageTurnAnim").show()
+				get_node("../../Page7/PageTurnAnim").play("PageTurn")
+				get_node("../../Page7/PageTurnAnim/AnimationPlayer").play("move_anim_left")
+		elif page == 14:
+			if !recto:
+				get_node("../../Page8/PageTurnAnim2").show()
+				get_node("../../Page8/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page8/PageTurnAnim2/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page8/PageTurnAnim2").show()
+				get_node("../../Page8/PageTurnAnim2").play("PageTurn")
+				get_node("../../Page8/PageTurnAnim2/AnimationPlayer").play("move_anim_left")
+		elif page == 15:
+			if !recto:
+				get_node("../../Page8/PageTurnAnim").show()
+				get_node("../../Page8/PageTurnAnim").play("PageTurn")
+				get_node("../../Page8/PageTurnAnim/AnimationPlayer").play("move_anim_right")
+			else:
+				get_node("../../Page8/PageTurnAnim").show()
+				get_node("../../Page8/PageTurnAnim").play("PageTurn")
+				get_node("../../Page8/PageTurnAnim/AnimationPlayer").play("move_anim_left")
 
 func _on_animation_finished() -> void:
 	hide() # Recache quand l'anim est terminée
 	
 func _move_anim():
-	offset.x += 4200
+	page += 1
 	recto = true
