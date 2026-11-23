@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://darwq6xnafart" path="res://art/Fond/fond_noir.png" id="3_poxic"]
 [ext_resource type="Texture2D" uid="uid://wts68o4fyp3v" path="res://art/Fond/fond_chaud.png" id="4_0c7d2"]
 [ext_resource type="AudioStream" uid="uid://c6ly08efqdagr" path="res://SFX/Page_2.wav" id="4_gux8m"]
-[ext_resource type="PackedScene" uid="uid://dq2l0otst4184" path="res://Scènes/ouverture_book.tscn" id="5_0c7d2"]
 [ext_resource type="Script" uid="uid://dycyotsae80fb" path="res://scripts/Personnage/control_touches.gd" id="5_iqs1s"]
 [ext_resource type="Script" uid="uid://hof3vxth75tb" path="res://scripts/Personnage/touches_wall_jump.gd" id="6_eeysh"]
 [ext_resource type="AudioStream" uid="uid://p03ahf71hasw" path="res://SFX/Page_3.wav" id="6_nwg7s"]
@@ -836,11 +835,6 @@ limit_top = -5839
 limit_right = 3027
 limit_bottom = -4015
 script = ExtResource("2_gux8m")
-
-[node name="OuvertureBook" parent="." unique_id=347624594 instance=ExtResource("5_0c7d2")]
-z_index = 10
-position = Vector2(-534, -4928)
-scale = Vector2(8.661932, 3.697897)
 
 [node name="Page1" parent="." unique_id=1747003562 instance=ExtResource("2_l22gy")]
 position = Vector2(2084, -2111)
