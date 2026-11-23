@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var musique_1: AudioStream
 @export var musique_2: AudioStream
+@export var musique_1: AudioStream
 
 @export var niveau_changement_musique = 5
 @export var niveau_arret_musique = 10
@@ -66,6 +66,7 @@ func _gerer_musique():
 		
 
 		lecteur.stream = musique_1 if musique_voulue == 1 else musique_2
+		print(lecteur.stream.get_class())
 		lecteur.volume_db = -80
 		lecteur.play()
 
