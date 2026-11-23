@@ -7,6 +7,7 @@ extends Node2D
 @export var niveau_arret_musique = 10
 
 @export var duree_fondu = 3.0
+@export var duree_premier_fondu = 10.0
 
 @onready var niveau = $CharacterBody2D.page
 
@@ -62,13 +63,16 @@ func _gerer_musique():
 	else:
 		var lecteur = $Musique1 if musique_voulue == 1 else $Musique2
 		var autre = $Musique2 if musique_voulue == 1 else $Musique1
+		
 
 		lecteur.stream = musique_1 if musique_voulue == 1 else musique_2
 		lecteur.volume_db = -80
 		lecteur.play()
 
-		tween.tween_property(autre, "volume_db", -80, duree_fondu)
-		tween.tween_property(lecteur, "volume_db", 0, duree_fondu)
+		var duree = duree_premier_fondu if musique_actuelle == 1 and niveau < niveau_changement_musique else duree_fondu
+
+		tween.tween_property(autre, "volume_db", -40, duree)
+		tween.tween_property(lecteur, "volume_db", 0, duree)
 
 	await tween.finished
 
