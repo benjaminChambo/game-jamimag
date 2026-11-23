@@ -5,4 +5,4 @@ func _process(_delta):
 		if visible == true :
 			visible = false
 		else :
-			visible = false
+			visible = true
