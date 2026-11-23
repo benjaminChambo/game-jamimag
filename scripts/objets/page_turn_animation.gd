@@ -7,6 +7,19 @@ func _ready() -> void:
 	hide()  # Cache l'anim au début
 	get_node("../Page1/ToRight").corps_detecte.connect(_move_anim)
 	get_node("../Page1/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page2/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page2/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page3/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page3/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page4/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page4/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page5/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page5/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page6/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page6/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page7/ToRight").corps_detecte.connect(_move_anim)
+	get_node("../Page7/ToRight2").corps_detecte.connect(_move_anim)
+	get_node("../Page8/ToRight").corps_detecte.connect(_move_anim)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:

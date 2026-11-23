@@ -18,13 +18,20 @@ func _ready():
 	get_node("../Page3/ToRight2").corps_detecte.connect(_go_right)
 	get_node("../Page4/ToRight").corps_detecte.connect(_go_right)
 	get_node("../Page4/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page5/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page5/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page6/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page6/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page7/ToRight").corps_detecte.connect(_go_right)
+	get_node("../Page7/ToRight2").corps_detecte.connect(_go_right)
+	get_node("../Page8/ToRight").corps_detecte.connect(_go_right)
 
 func _go_right():
 	suivre_joueur = false
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "zoom", Vector2(0.2, 0.2), 2.0)
-	tween.tween_property(self, "limit_right", limit_right+taille_niveau, 2.0)
+	tween.tween_property(self, "limit_right", limit_right+taille_niveau+64, 2.0)
 	tween.finished.connect(_deuxieme_tween)
 
 func _deuxieme_tween():
@@ -32,7 +39,7 @@ func _deuxieme_tween():
 	var tween2 = create_tween()
 	tween2.set_parallel(true)
 	tween2.tween_property(self, "zoom", Vector2(0.3, 0.3), 2.0)
-	tween2.tween_property(self, "limit_left", limit_left+taille_niveau, 2.0)
+	tween2.tween_property(self, "limit_left", limit_left+taille_niveau+64, 2.0)
 	await tween2.finished
 	suivre_joueur = true
 	

@@ -13,6 +13,14 @@ func _ready():
 	get_node("../Page3/ToRight2").corps_detecte.connect(_stop)
 	get_node("../Page4/ToRight").corps_detecte.connect(_stop)
 	get_node("../Page4/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page5/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page5/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page6/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page6/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page7/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page7/ToRight2").corps_detecte.connect(_stop)
+	get_node("../Page8/ToRight").corps_detecte.connect(_stop)
+
 
 func _stop():
 	stop = true
