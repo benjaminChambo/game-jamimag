@@ -637,6 +637,9 @@ size = Vector2(11, 1750)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4newj"]
 size = Vector2(10.5, 1826)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lnxq"]
+size = Vector2(3484.999, 1830.0002)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyvqa"]
 size = Vector2(68, 2066.9998)
 
@@ -668,14 +671,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CharacterBody2D" parent="." unique_id=1304069712 instance=ExtResource("1_34ld8")]
-position = Vector2(-171.27979, -4551.1123)
+position = Vector2(50613.6, -4797.1904)
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=980178254]
 position = Vector2(2647, -1600)
 zoom = Vector2(0.3, 0.3)
-limit_left = -488
+limit_left = 48366
 limit_top = -5839
-limit_right = 2931
+limit_right = 51785
 limit_bottom = -4015
 script = ExtResource("2_gux8m")
 
@@ -1531,8 +1534,16 @@ position = Vector2(725.75, -2809)
 shape = SubResource("RectangleShape2D_4newj")
 
 [node name="Page9" parent="." unique_id=476906412 instance=ExtResource("2_l22gy")]
-position = Vector2(58182, -2120)
+position = Vector2(58010, -2115)
 script = ExtResource("27_4fpbf")
+
+[node name="ZoneFin" type="Area2D" parent="Page9" unique_id=729776269]
+position = Vector2(-7126, 4)
+script = ExtResource("7_ih0dn")
+
+[node name="ZoneFinCol" type="CollisionShape2D" parent="Page9/ZoneFin" unique_id=705796871]
+position = Vector2(2780.5, -2849)
+shape = SubResource("RectangleShape2D_5lnxq")
 
 [node name="Fleur" type="Node2D" parent="Page9" unique_id=1125311025]
 position = Vector2(-3076, -2714)
@@ -1580,14 +1591,14 @@ text = "Vous avez tourné la page."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Crédits" type="Label" parent="Page9/CanvasLayer" unique_id=171336800]
+[node name="Crédits" type="RichTextLabel" parent="Page9/CanvasLayer" unique_id=710741786]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Crédits"
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 

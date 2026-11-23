@@ -20,7 +20,10 @@ func _ready():
 	get_node("../Page7/ToRight").corps_detecte.connect(_stop)
 	get_node("../Page7/ToRight2").corps_detecte.connect(_stop)
 	get_node("../Page8/ToRight").corps_detecte.connect(_stop)
+	get_node("../Page9/ZoneFin").corps_detecte.connect(_show)
 
+func _show():
+	stop = true
 
 func _stop():
 	stop = true
