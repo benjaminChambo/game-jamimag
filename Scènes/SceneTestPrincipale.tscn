@@ -1097,7 +1097,7 @@ script = ExtResource("2_gux8m")
 position = Vector2(2084, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page1" unique_id=381243398]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1344,7 +1344,7 @@ script = ExtResource("32_4rham")
 position = Vector2(9032, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page2" unique_id=1130421920]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1355,7 +1355,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page2" unique_id=1608067575]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
@@ -1472,7 +1472,7 @@ shape = SubResource("RectangleShape2D_4newj")
 position = Vector2(16035, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page3" unique_id=269158830]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1483,7 +1483,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page3" unique_id=1530404122]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
@@ -1598,7 +1598,7 @@ shape = SubResource("RectangleShape2D_4newj")
 position = Vector2(23037, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page4" unique_id=1383675792]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1609,7 +1609,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page4" unique_id=2146133317]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
@@ -1726,7 +1726,7 @@ shape = SubResource("RectangleShape2D_4newj")
 position = Vector2(29998, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page5" unique_id=1755753727]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1737,7 +1737,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page5" unique_id=31788598]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
@@ -1857,7 +1857,7 @@ position = Vector2(279, -2793)
 position = Vector2(36973, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page6" unique_id=706703651]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1868,7 +1868,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page6" unique_id=1867459198]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
@@ -1985,7 +1985,7 @@ shape = SubResource("RectangleShape2D_4newj")
 position = Vector2(43929, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page7" unique_id=566979597]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -1996,7 +1996,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page7" unique_id=260378958]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
@@ -2119,7 +2119,7 @@ position = Vector2(2739, -2963)
 position = Vector2(50884, -2111)
 
 [node name="PageTurnAnim" type="AnimatedSprite2D" parent="Page8" unique_id=767983257]
-z_index = 2
+z_index = 3
 position = Vector2(-2598, -2813)
 scale = Vector2(8.582316, 3.6867337)
 sprite_frames = SubResource("SpriteFrames_d7522")
@@ -2130,7 +2130,7 @@ script = ExtResource("3_2ru4x")
 libraries/ = SubResource("AnimationLibrary_2ru4x")
 
 [node name="PageTurnAnim2" type="AnimatedSprite2D" parent="Page8" unique_id=1029942868]
-z_index = 2
+z_index = 3
 position = Vector2(-6067, -2813)
 scale = Vector2(8.58, 3.68)
 sprite_frames = SubResource("SpriteFrames_evhq4")
