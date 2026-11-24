@@ -82,3 +82,7 @@ func lancer_generique():
 		await tween2.finished
 
 		await get_tree().create_timer(0.4).timeout
+
+
+func _on_end_finished() -> void:
+	get_tree().quit() # Ferme le jeu lorsque l'audio "End" est terminé
