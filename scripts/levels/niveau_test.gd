@@ -28,6 +28,7 @@ func _ready():
 
 func _show():
 	stop = true
+	page += 1
 
 func _stop():
 	stop = true
@@ -103,8 +104,6 @@ func _physics_process(_delta: float) -> void:
 				get_node("../Page8/TML_chaud/FondChaud8").show()
 			elif page == 16:
 				get_node("../Page8/TML_chaud/FondChaud8").show()
-			else:
-				get_node("../Page9/TML_chaud/FondChaud9").show()
 		elif currentTile == 2:
 			currentTile = 1
 			map_2.set_enabled(false)
@@ -160,6 +159,7 @@ func hide_all():
 	get_node("../Page7/TML_froid/FondFroid7").hide()
 	get_node("../Page8/TML_chaud/FondChaud8").hide()
 	get_node("../Page8/TML_froid/FondFroid8").hide()
+	get_node("../Page9/TML_froid/FondFroid9").hide()
 
 
 func _on_ouverture_book_animation_finished() -> void:
