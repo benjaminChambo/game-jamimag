@@ -29,14 +29,14 @@ func _stop():
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const LIMITE_DASH = 0
-const LIMITE_WALL_JUMP = 0
+const LIMITE_DASH = 12
+const LIMITE_WALL_JUMP = 8
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -1000.0
 
 # Gravity - you can get it from project settings or define it here
-var gravity = Vector2(0, 2000)
+var gravity = Vector2(0, 2100)
 
 # Other variables you might need
 #var air_jumps = 1         # For a double jump
@@ -61,14 +61,14 @@ var dash_timer: float = 0.0
 
 # Constantes et variables pour le wall jump
 const WALL_GRAVITY = 7000.0
-const WALL_JUMP_PUSH_FORCE = 550.0
+const WALL_JUMP_PUSH_FORCE = 700.0
 const WALL_JUMP_VELOCITY = -700.0
 
 var wall_coyote = 0.0
 const WALL_COYOTE_TIME = 0.1
 
 var wall_jump_lock = 0.0
-const WALL_JUMP_LOCK_TIME = 0.2
+const WALL_JUMP_LOCK_TIME = 0.3
 
 var look_dir_x = 1
 var direction_wall = Input.get_axis("left_q", "right_d")
@@ -111,7 +111,11 @@ func respawn():
 	else:
 		self.global_position = Vector2(52145.0, -4316.0)
 
+
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("respawn_r"):
+		respawn()
+	
 	if stop :
 		return
 	# Get the input direction and handle the movement/deceleration
@@ -206,6 +210,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("space_jump"):
 			velocity.y = WALL_JUMP_VELOCITY
 			wall_jump_lock = WALL_JUMP_LOCK_TIME
+			wall_coyote = 0
 	
 	if wall_jump_lock > 0.0:
 		wall_jump_lock -= delta
