@@ -296,7 +296,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
@@ -312,7 +312,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
@@ -808,7 +808,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
@@ -822,6 +822,9 @@ _data = {
 &"RESET": SubResource("Animation_vg0bd"),
 &"move_fish": SubResource("Animation_0unok")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evhq4"]
+size = Vector2(35.416985, 89.527374)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n614y"]
 atlas = ExtResource("2_v45tl")
@@ -937,7 +940,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
@@ -953,7 +956,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
@@ -1292,7 +1295,7 @@ libraries/ = SubResource("AnimationLibrary_4vik1")
 autoplay = &"move_fish"
 
 [node name="Sprite2D5" type="Sprite2D" parent="Page1" unique_id=1998594562]
-position = Vector2(-700, -2237)
+position = Vector2(-661, -2256)
 scale = Vector2(1.291553, 0.9779126)
 texture = ExtResource("36_rtwj4")
 script = ExtResource("32_4rham")
@@ -1488,6 +1491,13 @@ rotation = 0.46917358
 scale = Vector2(-1.1017154, -0.8919863)
 texture = ExtResource("45_0unok")
 script = ExtResource("41_gbyr3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Page1" unique_id=772467744]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Page1/StaticBody2D" unique_id=760688814]
+position = Vector2(-2576, -2819)
+scale = Vector2(2.827367, 23.74693)
+shape = SubResource("RectangleShape2D_evhq4")
 
 [node name="Page2" parent="." unique_id=1471697786 instance=ExtResource("2_l22gy")]
 position = Vector2(9032, -2111)

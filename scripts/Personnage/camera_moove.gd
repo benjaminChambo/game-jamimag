@@ -5,9 +5,21 @@ var suivre_joueur = true
 @onready var joueur = get_parent().get_node("CharacterBody2D")
 @export var taille_niveau:int = 3392
 
-func _process(_delta):
+# Variables for camera shake on death
+var max_shake = 5.0
+var shake_fade = 10.0
+var shake_strength = 0.0
+
+func _process(delta):
 	if suivre_joueur:
 		global_position = joueur.global_position
+	if Globals.dead:
+		shake_strength = max_shake
+		Globals.dead = false
+	if shake_strength > 0:
+		shake_strength = lerp(shake_strength, 0.0, shake_fade * delta)
+		offset = Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("../Page1/ToRight").corps_detecte.connect(_go_right)
