@@ -785,6 +785,44 @@ size = Vector2(11, 1750)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4newj"]
 size = Vector2(10.5, 1826)
 
+[sub_resource type="Animation" id="Animation_vg0bd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-792, -2186)]
+}
+
+[sub_resource type="Animation" id="Animation_0unok"]
+resource_name = "move_fish"
+length = 3.0000000000000004
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-792, -2186), Vector2(-754, -2186)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vik1"]
+_data = {
+&"RESET": SubResource("Animation_vg0bd"),
+&"move_fish": SubResource("Animation_0unok")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n614y"]
 atlas = ExtResource("2_v45tl")
 region = Rect2(0, 0, 984, 672)
@@ -1249,8 +1287,12 @@ scale = Vector2(1.7582814, 1.4063846)
 texture = ExtResource("36_rtwj4")
 script = ExtResource("32_4rham")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Page1/Sprite2D4" unique_id=2138254454]
+libraries/ = SubResource("AnimationLibrary_4vik1")
+autoplay = &"move_fish"
+
 [node name="Sprite2D5" type="Sprite2D" parent="Page1" unique_id=1998594562]
-position = Vector2(-673.99994, -2255)
+position = Vector2(-700, -2237)
 scale = Vector2(1.291553, 0.9779126)
 texture = ExtResource("36_rtwj4")
 script = ExtResource("32_4rham")
