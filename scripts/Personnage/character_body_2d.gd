@@ -244,3 +244,4 @@ func _dash_logic(delta: float) -> void:
 	
 func bounce(force: float):
 	velocity.y = force
+	can_dash = true
