@@ -1025,7 +1025,7 @@ scale = Vector2(130.92522, 9.882504)
 texture = ExtResource("3_t3gjf")
 
 [node name="OuvertureBook" type="AnimatedSprite2D" parent="." unique_id=1745255013]
-z_index = 10
+z_index = 11
 position = Vector2(-532, -4922)
 scale = Vector2(8.714066, 3.7170262)
 sprite_frames = SubResource("SpriteFrames_k4jyb")
@@ -2667,7 +2667,7 @@ offset_right = 2748.0
 offset_bottom = -3997.0
 scale = Vector2(1.0645723, 1.0151317)
 stream = ExtResource("59_n614y")
-volume_db = -5.4999995
+volume_db = -5.4999986
 autoplay = true
 expand = true
 loop = true
